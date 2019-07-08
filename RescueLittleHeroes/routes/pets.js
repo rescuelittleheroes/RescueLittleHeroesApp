@@ -42,55 +42,64 @@ router.post('/add', uploadCloud.single('photo'), (req, res, next) => {
         })
 });
 
-// router.get('/detail/:id', (req, res, next) => {
-//     Place.findOne({ _id: req.params.id }).then(place => {
-//         res.render("detail", { place })
-//     }).catch((err) => {
-//         console.log(err)
-//     });
+router.get('/detail/:id', (req, res, next) => {
+    Pet.findOne({ _id: req.params.id })
+        .then(pet => {
+            res.render("detail", { pet })
+        }).catch((err) => {
+            console.log(err)
+        });
 
-// });
+});
 
-// router.post('/:id/delete', (req, res, next) => {
-//     Place.findByIdAndRemove({ _id: req.params.id })
-//         .then(placeDelete => res.redirect("/"))
-//         .catch((err) => {
-//             console.log(err)
-//         });
-// });
-// router.get('/edit/:id', (req, res, next) => {
-//     Place.findOne({ _id: req.params.id }).then(place => {
-//         res.render("edit", { place })
-//     }).catch((err) => {
-//         console.log(err)
-//     });
+router.post('/:id/delete', (req, res, next) => {
+    Pet.findByIdAndRemove({ _id: req.params.id })
+        .then(petDelete => res.redirect("/"))
+        .catch((err) => {
+            console.log(err)
+        });
+});
+router.get('/edit/:id', (req, res, next) => {
+    Pet.findOne({ _id: req.params.id })
+        .then(pet => {
+            res.render("edit", { pet })
+        }).catch((err) => {
+            console.log(err)
+        });
 
-// });
-// router.post("/edit-place", (req, res) => {
-//     Place
-//         .findByIdAndUpdate(req.body._id, {
-//             name: req.body.name,
-//             type: req.body.type,
-//             location: {
-//                 type: 'Point',
-//                 coordinates: [+req.body.longitude, +req.body.latitude]
-//             }
+});
+router.post("/edit-place", (req, res) => {
+    Pet
+        .findByIdAndUpdate(req.body._id, {
+            shelter: "Shelter1",
+            name: String,
+            type_animal: "Dog",
+            size: "Small",
+            wasFounded: false,
+            description: "Encontrado pequeño caniche blanco",
+            photo_name: "original name", //req.file.originalname,
+            photo_url: "https://www.hogarmania.com/archivos/201705/mascotas-perros-razas-caniche-668x400x80xX.jpg", //req.file.url,
+            location: {
+                type: 'Point',
+                coordinates: [+req.body.longitude, +req.body.latitude]
+            },
+            neighborhood: ["Puente Vallecas"],
+            founded_by: req.user.id
+        })
+        .then(updatedPet => {
+            res.redirect("/")
+        })
+        .catch((err) => {
+            console.log(err)
+        });
+})
 
-//         })
-//         .then(updatedPlace => {
-//             res.redirect("/")
-//         })
-//         .catch((err) => {
-//             console.log(err)
-//         });
-// })
-
-// router.get('/json', (req, res, next) => {
-//     Place.find().then(places => {
-//         res.json({ places })
-//     }).catch((err) => {
-//         console.log(err)
-//     });
-// });
+router.get('/json', (req, res, next) => {
+    Place.find().then(pets => {
+        res.json({ pets })
+    }).catch((err) => {
+        console.log(err)
+    });
+});
 
 module.exports = router;
