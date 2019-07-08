@@ -9,6 +9,7 @@ const PetSchema = Schema({
     size: { type: String, enum: ["Small", "Medium", "Big"] },
     wasFounded: Boolean,
     description: String,
+    photo_name: String,
     photo_url: String,
     location: { type: { type: String }, coordinates: [Number] },
     neighborhood: { type: { type: String }, coordinates: [Number] },

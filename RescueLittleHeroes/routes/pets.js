@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Pet = require("../models/Pets")
+const uploadCloud = require('../config/cloudinary.js');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -20,7 +21,7 @@ router.get('/add', (req, res, next) => {
     res.render("add")
 });
 
-router.post('/add', (req, res, next) => {
+router.post('/add', uploadCloud.single('photo'), (req, res, next) => {
     Pet
         .create({
             shelter: "Shelter1",
@@ -29,7 +30,8 @@ router.post('/add', (req, res, next) => {
             size: "Small",
             wasFounded: false,
             description: "Encontrado pequeño caniche blanco",
-            photo_url: "https://www.hogarmania.com/archivos/201705/mascotas-perros-razas-caniche-668x400x80xX.jpg",
+            photo_name: "original name", //req.file.originalname,
+            photo_url: "https://www.hogarmania.com/archivos/201705/mascotas-perros-razas-caniche-668x400x80xX.jpg", //req.file.url,
             location: ["40.3885195", "-3.6695838"],
             neighborhood: ["Puente Vallecas"],
             founded_by: req.user.id
@@ -38,7 +40,6 @@ router.post('/add', (req, res, next) => {
         .catch((err) => {
             console.log(err)
         })
-
 });
 
 // router.get('/detail/:id', (req, res, next) => {
