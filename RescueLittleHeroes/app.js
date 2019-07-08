@@ -84,7 +84,7 @@ app.use('/auth', authRoutes);
 const petRoutes = require('./routes/pets');
 app.use('/pet', petRoutes);
 
-const userRoutes = require('./routes/users');
-app.use('/user', userRoutes);
+const ShelterRoutes = require('./routes/shelters');
+app.use('/shelter', ShelterRoutes);
 
 module.exports = app;
