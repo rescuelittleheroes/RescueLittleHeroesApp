@@ -7,13 +7,14 @@ router.get('/', (req, res, next) => {
     res.render('index');
 });
 
-// router.get('/list', (req, res, next) => {
-//     Place.find().then(places => {
-//         res.render("list", { places })
-//     }).catch((err) => {
-//         console.log(err)
-//     });
-// });
+router.get('/list', (req, res, next) => {
+    Pet.find()
+        .then(pets => {
+            res.render("list", { pets })
+        }).catch((err) => {
+            console.log(err)
+        });
+});
 
 router.get('/add', (req, res, next) => {
     res.render("add")
@@ -22,7 +23,6 @@ router.get('/add', (req, res, next) => {
 router.post('/add', (req, res, next) => {
     Pet
         .create({
-            // reference_id: String,
             shelter: "Shelter1",
             name: String,
             type_animal: "Dog",
@@ -34,21 +34,11 @@ router.post('/add', (req, res, next) => {
             neighborhood: ["Puente Vallecas"],
             founded_by: req.user.id
         })
-
-
-
-
-
-    Place
-        .create({
-            name: req.body.name,
-            type: req.body.type,
-            location: {
-                type: 'Point',
-                coordinates: [+req.body.longitude, +req.body.latitude]
-            }
+        .then(newPet => res.redirect("/pet/list"))
+        .catch((err) => {
+            console.log(err)
         })
-        .then(placeNew => res.redirect("/"))
+
 });
 
 // router.get('/detail/:id', (req, res, next) => {
