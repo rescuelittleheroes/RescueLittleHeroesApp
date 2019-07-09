@@ -12,7 +12,7 @@ const PetSchema = Schema({
     photo_url: String,
     location: { type: { type: String }, coordinates: [Number] },
     neighborhood: { type: { type: String }, coordinates: [Number] },
-    founded_by: { type: Schema.Types.ObjectId, ref: "User" },
+    found_by: { type: Schema.Types.ObjectId, ref: "User" },
     shelter: { type: Schema.Types.ObjectId, ref: "Shelter" }
 }, {
     timestamps: {

@@ -13,6 +13,8 @@ const Axios = require("axios");
 const bcryptSalt = 10;
 let fakeShelters = [];
 let fakePets = [];
+let shelterId = undefined
+let userId = undefined
 
 mongoose
     .connect("mongodb://localhost/rescuelittleheroes", { useNewUrlParser: true })
@@ -76,7 +78,9 @@ Axios.get('https://randomuser.me/api/', {
             .then(() => {
                 User
                     .create(users)
-                console.log("FAKE USERS CREATED!!!")
+                    .then((newuser) => {
+                        userId = newuser[0]._id;
+                    })
             })
     })
     .then(() => {
@@ -84,7 +88,10 @@ Axios.get('https://randomuser.me/api/', {
             .then(() => {
                 Shelter
                     .create(fakeShelters)
-                console.log("FAKE SHELTERS CREATED!!!")
+                    .then((newshelter) => {
+                        shelterId = newshelter[0]._id;
+                    })
+
             })
     })
     .then(() => {
@@ -116,8 +123,8 @@ Axios.get('https://randomuser.me/api/', {
                     photo_url: values[0],
                     location: undefined,
                     neighborhood: undefined,
-                    found_by: undefined,
-                    shelter: undefined
+                    found_by: userId,
+                    shelter: shelterId
                 }, {
                     name: 'Raluquita',
                     type_animal: 'Cat',
@@ -128,8 +135,8 @@ Axios.get('https://randomuser.me/api/', {
                     photo_url: values[1],
                     location: undefined,
                     neighborhood: undefined,
-                    found_by: undefined,
-                    shelter: undefined
+                    found_by: userId,
+                    shelter: shelterId
                 }]
             })
             .then(() => {
@@ -138,8 +145,9 @@ Axios.get('https://randomuser.me/api/', {
                         Pet
                             .create(fakePets)
                         console.log("FAKE PETS CREATED!!!")
+                            // process.exit(0);
+                            // mongoose.disconnect()
                     })
-                    // mongoose.disconnect()
             })
     })
     .catch(err => {
