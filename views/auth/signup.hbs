@@ -1,0 +1,72 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+<link rel="stylesheet" href="/stylesheets/style.css" />
+
+
+<h1 class="title">
+  ¡BIENVENIDO A RESCUE LITTLE HEROES!
+</h1>
+
+<section class="is-fullheight is-medium is-primary is-bold signupBg" enctype="multipart/form-data">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-half signSit">
+        <article class="card is-rounded is-centered login-card">
+         
+           
+            <form action="/signup" method="POST" id="form-container">
+              <p class="control has-icon login-input">
+                <input type="text" name="username" class="input form-control" placeholder="Nombre">
+                
+              </p>
+              <p class="control has-icon login-input">
+                <input type="text" name="surname" class="input form-control" placeholder="Apellidos">
+                
+              </p>
+              <p class="control has-icon login-input">
+                <input id="email" class="input" name="email" type="email" placeholder="Dirección de correo electrónico">
+                
+              </p>
+              <p class="control has-icon login-input">
+                <input id="password" class="input" name="password" type="password" placeholder="Contraseña">
+              </p>
+              <div class="field">
+                <input id="switchRoundedSuccess" type="checkbox" name="switchRoundedSuccess" class="switch is-rounded is-success"
+                  checked="checked">
+                <label id="p-session"for="switchRoundedSuccess">No cerrar sesión</label>
+              </div>
+
+              <p class="control">
+                <button type="submit" class="button is-link is-medium is-fullwidth">
+                  <i class="fa fa-user"></i>
+                 <span id="text-entrar">Entrar</span> 
+                </button>
+              </p>
+              <p class="control">
+                <a id="instagram-bottom" class="button is-link is-medium is-instagram is-fullwidth">
+                  <span class="icon">
+                    <i class="fab fa-instagram"></i>
+                  </span>
+                  <span id="text-instagram">Instagram</span>
+                </a>
+                </p>
+            </form>
+
+            <!-- Instagram Button -->
+         
+          
+            <p class="account-message">
+             Si ya estas ya registrado
+              <a href="/login" class="auth-link">Login</a>
+            </p>
+            {{#if message }}
+            <br>
+            <br>
+            <div class="error-message control">{{ message }}</div>
+            {{/if}}
+          
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
