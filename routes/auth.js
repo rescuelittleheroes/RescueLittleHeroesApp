@@ -2,6 +2,8 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
+const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
+
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -105,5 +107,36 @@ router.post("/edit-place", (req, res) => {
             console.log(err)
         });
 })
+
+
+
+router.get(
+  "/auth/slack/callback",
+  passport.authenticate("slack",  {
+    successRedirect: "/shelters",
+    failureRedirect: "/"
+  })
+);
+
+router.get(
+  "/auth/instagram/callback",
+  passport.authenticate("instagram", { failureRedirect: "/login" }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
+
+
+
+// router.get(
+//   "/callback",
+//   passport.authenticate("slack", { failureRedirect: "/" }),
+//   (req, res) => {
+//     res.redirect("/shelters/shelters");
+//   }
+// );
+
+
 
 module.exports = router;
