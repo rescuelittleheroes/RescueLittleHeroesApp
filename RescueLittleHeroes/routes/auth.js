@@ -90,7 +90,7 @@ router.post("/edit-place", (req, res) => {
     User
         .findByIdAndUpdate(req.body._id, {
             username: "test",
-            email: "prueba@gmail.com",
+            email: "testprueba@gmail.com",
             telephoneNumber: "555987098",
             password: "test",
             name: "TestName",
