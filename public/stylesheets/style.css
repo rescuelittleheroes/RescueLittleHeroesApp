@@ -106,7 +106,7 @@ a {
 .social-link--instagram {
   color: #9a2970; }
 
-.social-link--dribbble {
+.social-link--slack {
   color: #b53561; }
 
 .social-link .social-svg {
@@ -203,5 +203,120 @@ a {
 
 .navbar-item img {
   max-height: 4.75rem; }
+
+.feature_item {
+  text-align: center;
+  padding: 40px 0px 60px 0px;
+  -webkit-transition: all 400ms linear 0s;
+  -o-transition: all 400ms linear 0s;
+  transition: all 400ms linear 0s; }
+
+.feature_item .f_icon {
+  min-height: 91px;
+  position: relative; }
+
+.feature_item .f_icon img {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  max-height: 5.5rem; }
+
+.feature_item h4 {
+  color: #0b1033;
+  font-weight: bold;
+  font-size: 2.3rem;
+  padding: 45px 0px 20px 0px; }
+
+.feature_item p {
+  font-size: 1.2rem;
+  line-height: 28px;
+  color: #7c8d93;
+  font-weight: 500;
+  max-width: 290px;
+  margin: auto;
+  padding-bottom: 60px; }
+
+.feature_item a {
+  font-size: 1.3rem; }
+
+.feature_item .more_btn {
+  opacity: 0; }
+
+.feature_item:hover {
+  -webkit-box-shadow: 0px 14px 38px 0px rgba(0, 0, 0, 0.11);
+  box-shadow: 0px 14px 38px 0px rgba(0, 0, 0, 0.11); }
+
+.feature_item:hover .more_btn {
+  opacity: 1;
+  text-decoration: none; }
+
+.shelters_animals {
+  border-bottom: 1px solid #bbbec1;
+  padding-top: 100px;
+  overflow: hidden; }
+
+a {
+  cursor: pointer;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
+  a .span-t {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    transition: transform cubic-bezier(0.77, 0, 0.175, 1) 250ms;
+    padding: 0 0.1em; }
+    a .span-t:nth-child(0n) {
+      transition-delay: 0ms; }
+    a .span-t:nth-child(0n):after {
+      transition-delay: 0ms; }
+    a .span-t:nth-child(1n) {
+      transition-delay: 83.33333ms; }
+    a .span-t:nth-child(1n):after {
+      transition-delay: 83.33333ms; }
+    a .span-t:nth-child(2n) {
+      transition-delay: 166.66667ms; }
+    a .span-t:nth-child(2n):after {
+      transition-delay: 166.66667ms; }
+    a .span-t:nth-child(3n) {
+      transition-delay: 250ms; }
+    a .span-t:nth-child(3n):after {
+      transition-delay: 250ms; }
+    a .span-t:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: -1%;
+      width: 102%;
+      height: 2em;
+      background: blue;
+      transform-origin: top center;
+      transform: scaley(0.1);
+      transition: transform cubic-bezier(0.77, 0, 0.175, 1) 250ms; }
+  a:hover span {
+    transform: translateY(-1em); }
+    a:hover span:after {
+      transform: scaleY(1); }
+  a:active .span-t {
+    transform: translateY(0);
+    transition: transform cubic-bezier(0.77, 0, 0.175, 1) 125ms;
+    transition-delay: 0 !important; }
+    a:active .span-t:after {
+      transform: scaleY(0.5);
+      transition: transform cubic-bezier(0.77, 0, 0.175, 1) 125ms;
+      transition-delay: 0 !important; }
+
+.slack-login {
+  max-width: 85%;
+  margin-top: 4%; }
+
+.slack-login img {
+  max-width: 100%;
+  margin-top: 14%; }
 
 /*# sourceMappingURL=style.css.map */

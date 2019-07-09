@@ -49,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
+
 hbs.registerHelper('ifUndefined', (value, options) => {
     if (arguments.length < 2)
         throw new Error("Handlebars Helper ifUndefined needs 1 parameter");
@@ -88,3 +89,6 @@ const ShelterRoutes = require('./routes/shelters');
 app.use('/shelter', ShelterRoutes);
 
 module.exports = app;
+
+
+
