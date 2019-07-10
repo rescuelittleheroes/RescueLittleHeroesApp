@@ -4,6 +4,7 @@ const User          = require('../models/User');
 const bcrypt        = require('bcrypt');
 const SlackStrategy = require("passport-slack").Strategy;
 const InstagramStrategy = require("passport-instagram").Strategy;
+const GitHubStrategy = require("passport-github").Strategy;
 
 passport.use(new LocalStrategy({
     usernameField: 'username',
@@ -28,20 +29,6 @@ passport.use(new LocalStrategy({
   }
 ));
 
-// passport.use(
-//   new InstagramStrategy(
-//     {
-//       clientID: INSTAGRAM_CLIENT_ID,
-//       clientSecret: INSTAGRAM_CLIENT_SECRET,
-//       callbackURL: "http://127.0.0.1:3000/auth/login/instagram/callback"
-//     },
-//     function(accessToken, refreshToken, profile, done) {
-//       User.findOrCreate({ instagramId: profile.id }, function(err, user) {
-//         return done(err, user);
-//       });
-//     }
-//   )
-// );
 
 passport.use(
   new SlackStrategy(
@@ -66,6 +53,23 @@ passport.use(
     function(accessToken, refreshToken, profile, done) {
       User.findOrCreate({ instagramId: profile.id }, function(err, user) {
         return done(err, user);
+      });
+    }
+  )
+);
+
+
+
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      User.findOrCreate({ githubId: profile.id }, function(err, user) {
+        return cb(err, user);
       });
     }
   )

@@ -118,6 +118,7 @@ router.get(
   })
 );
 
+
 router.get(
   "/auth/instagram/callback",
   passport.authenticate("instagram", { failureRedirect: "/login" }),
@@ -127,16 +128,16 @@ router.get(
   }
 );
 
+router.get("/auth/github", passport.authenticate("github"));
 
-
-// router.get(
-//   "/callback",
-//   passport.authenticate("slack", { failureRedirect: "/" }),
-//   (req, res) => {
-//     res.redirect("/shelters/shelters");
-//   }
-// );
-
+router.get(
+  "/auth/github/callback",
+  passport.authenticate("github", { failureRedirect: "/login" }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
 
 
 module.exports = router;
