@@ -15,7 +15,7 @@ const flash = require("connect-flash");
 
 
 mongoose
-    .connect('mongodb://localhost/rescuelittleheroes', { useNewUrlParser: true })
+    .connect(process.env.BBDD_ATLAS, { useNewUrlParser: true })
     .then(x => {
         console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })
