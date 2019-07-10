@@ -423,59 +423,66 @@ a {
 
 //PAGE PETS LISTS
 .wrapper-pets {
-    position: absolute;
-    top: 10%;
-    left: 40%;
-    width: 300px;
-    height: 500px;
-    perspective: 1200px;
-    margin-top: 12rem;
+
+  // display: flex;
+  // flex-wrap: wrap;
+  // position: absolute;
+  // top: 10%;
+  // left: 40%;
+  width: 300px;
+  height: 500px;
+  perspective: 1200px;
+
+  // margin-top: 12rem;
 }
 
 .container-pets {
-    position: absolute;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    transition: .5s all ease;
-    transform: rotateX(60deg) scale(0.7);
-    perspective: 1200px;
-    box-shadow: 0px 20px 50px #555;
-    animation: entry 1s linear 1;
+  // position: absolute;
+  margin: 20px;
+  top: 0%;
+  // width: 100%;
+  // height: 100%;
+  transition: .5s all ease;
+  transform: rotateX(60deg) scale(0.7);
+  perspective: 1200px;
+  box-shadow: 0px 20px 50px #555;
+  animation: entry 1s linear 1;
+
 }
 
 #c0 {
-    position: absolute;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, #eba65b 30%, #d99267 100%);
-    z-index: 300;
-    box-shadow: 0px 20px 100px #555;
+   position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #eba65b 30%, #d99267 100%);
+  z-index: 300;
+  box-shadow: 0px 20px 100px #555;
 }
 
 #c1 {
-    background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
-    box-shadow: 0px 20px 100px #555;
-    left: 100%;
-    z-index: 0;
+  background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
+  box-shadow: 0px 20px 100px #555;
+  // left: 100%;
+  z-index: 0;
 }
 
-#c2 {
-    left: -100%;
-    z-index: 9999;
-    background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
-    box-shadow: 0px 20px 100px #555;
-}
+// #c2 {
+//   left: -100%;
+//   z-index: 9999;
+//   background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
+//   box-shadow: 0px 20px 100px #555;
+// }
 
-#c3 {
-    left: -100%;
-    z-index: 9999;
-    background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
-    box-shadow: 0px 20px 100px #555;
-    position: absolute;
-    top: 19rem;
-}
+// #c3 {
+//   left: -100%;
+//   z-index: 9999;
+//   background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
+//   box-shadow: 0px 20px 100px #555;
+//    position: absolute;
+//    top: 19rem;
+   
+// }
 
 .container-pets:hover {
     cursor: pointer;
@@ -485,12 +492,12 @@ a {
 }
 
 .image {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 45%;
-    background: linear-gradient(to top, #eba65b 30%, #d99267 100%);
+  // position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 45%;
+  background: linear-gradient(to top, #eba65b 30%, #d99267 100%);
 }
 
 #i1 {
@@ -502,12 +509,12 @@ a {
 }
 
 span-pets {
-    position: absolute;
-    top: 0%;
-    left: 55%;
-    border-radius: 100%;
-    background-color: #fff;
-    z-index: 10;
+  // position: absolute;
+  top: 0%;
+  left: 55%;
+  border-radius: 100%;
+  background-color: #fff;
+  z-index: 10;
 }
 
 .sun {
@@ -584,13 +591,13 @@ span-pets {
 }
 
 .story {
-    position: absolute;
-    top: 45%;
-    left: 0%;
-    height: 55%;
-    width: 100%;
-    background: linear-gradient(to bottom, #eba65b 0%, #d99267 40%);
-    z-index: 30;
+  // position: absolute;
+  top: 45%;
+  left: 0%;
+  height: 55%;
+  width: 100%;
+  background: linear-gradient(to bottom, #eba65b 0%, #d99267 40%);
+  z-index: 30;
 }
 
 #s1 {
@@ -606,8 +613,8 @@ span-pets {
 }
 
 .info-pets {
-    position: absolute;
-    top: 10%;
+  // position: absolute;
+  top: 10%;
 }
 
 .h3-pets {
@@ -619,12 +626,13 @@ span-pets {
 }
 
 .h4-pets {
-    color: #111;
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    letter-spacing: 2px;
-    font-weight: bolder;
+
+  color: #111;
+  // position: absolute;
+  top: 30%;
+  left: 30%;
+  letter-spacing: 2px;
+  font-weight: bolder;
 }
 
 .h1-pets {
@@ -646,19 +654,20 @@ span-pets {
 }
 
 .page {
-    position: absolute;
-    top: 80%;
-    width: 100%;
-    left: 0%;
-    height: 20%;
-    z-index: 30;
+
+  // position: absolute;
+  // top: 80%;
+  // width: 100%;
+  // left: 0%;
+  // height: 20%;
+  z-index: 30;
 }
 
 .li-pets {
-    position: absolute;
-    top: 50%;
-    list-style: none;
-    color: #111;
+  // position: absolute;
+  top: 50%;
+  list-style: none;
+  color: #111;
 }
 
 .li-pets:nth-child(1) {
@@ -703,33 +712,40 @@ span-pets {
     }
 }
 
-#img-pets-c {
-    background-image: url("../images/descarga gato.jpeg");
-    position: absolute;
-    height: 200px;
-    background-size: 100% 100%;
+
+#img-pets-c{
+  // background-image: url("../images/descarga gato.jpeg");
+  // position: absolute;
+  width: 300px;
+  height: 200px;
+  background-size: 100% 100%;
+}
+// #img-pets-a {
+//   background-image: url("../images/dog adoption 1.jpeg");
+//   // position: absolute;
+//   height: 200px;
+  
+//   background-size: 100% 100%;
+// }
+// #img-pets-b {
+//   background-image: url("../images/dog image prueba.jpeg");
+//   // position: absolute;
+//   height: 200px;
+//   background-size: 100% 100%;
+// }
+
+
+// #img-pets-d {
+//   background-image: url("../images/gato 344.jpeg");
+//   // position: absolute;
+//   height: 200px;
+//   background-size: 100% 100%;
+// }
+
+.clases-de-rap-con-francho{
+  width: 33%;
 }
 
-#img-pets-a {
-    background-image: url("../images/dog adoption 1.jpeg");
-    position: absolute;
-    height: 200px;
-    background-size: 100% 100%;
-}
-
-#img-pets-b {
-    background-image: url("../images/dog image prueba.jpeg");
-    position: absolute;
-    height: 200px;
-    background-size: 100% 100%;
-}
-
-#img-pets-d {
-    background-image: url("../images/gato 344.jpeg");
-    position: absolute;
-    height: 200px;
-    background-size: 100% 100%;
-}
 
 //FORMS
 .active-purple-2 input[type=text]:focus:not([readonly]) {
@@ -771,6 +787,67 @@ span-pets {
     margin: 0 auto;
 }
 
-.flex-form-wrapper {
-    display: flex;
+
+.btn.btn-sm {
+  padding: .5rem 1.6rem;
+  font-size: .64rem;
+  /* position: absolute; */
+  bottom: 1.8rem;
+  font-size: 1.1rem;
+  font-weight: bolder;
+}
+
+
+.btn.btn-lg {
+  padding: 1rem 2.4rem;
+  font-size: 1rem;
+  font-weight: bolder;
+  margin-top: 3rem;
+  // display: flex;
+  // flex-direction: initial;
+}
+
+.btn btn-danger btn-sm btn-roundedg waves-effect waves-light{
+   padding: 1rem 2.4rem;
+   font-size: 1rem;
+   font-weight: bolder;
+   margin-top: 3rem;
+}
+
+#danger-sm {
+   padding: 1rem 2.4rem;
+   font-size: 1rem;
+   font-weight: bolder;
+   margin-top: 3rem;
+}
+
+.fa-save:before {
+  content: "\f0c7";
+  font-size: 1rem;
+}
+
+
+
+#animals-btn{
+  background-color:#D7BFFF;
+  border-color: transparent;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+
+.wrap-container{
+  display:flex;
+  flex-wrap: wrap;
+}
+
+
+.hola {
+  display: none ;
+}
+
+
+#size-id{
+  
+
 }

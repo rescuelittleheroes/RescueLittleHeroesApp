@@ -87,6 +87,7 @@ router.get('/edit/:id', (req, res, next) => {
         });
 
 });
+
 router.post("/edit-place", (req, res) => {
     User
         .findByIdAndUpdate(req.body._id, {

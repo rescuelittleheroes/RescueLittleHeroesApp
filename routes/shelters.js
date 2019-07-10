@@ -57,13 +57,13 @@ router.post('/:id/delete', (req, res, next) => {
         });
 });
 router.get('/edit/:id', (req, res, next) => {
-    Shelter.findOne({ _id: req.params.id })
-        .then(shelter => {
-            res.render("edit", { shelter })
-        }).catch((err) => {
-            console.log(err)
-        });
-
+    // Shelter.findOne({ _id: req.params.id })
+    //     .then(shelter => {
+    //         res.render("shelters-edit", { shelter })
+    //     }).catch((err) => {
+    //         console.log(err)
+    //     });
+res.render("shelters-edit");
 });
 router.post("/edit-place", (req, res) => {
     Shelter
