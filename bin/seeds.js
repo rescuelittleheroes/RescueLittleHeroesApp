@@ -123,8 +123,8 @@ Axios.get('https://randomuser.me/api/', {
                     description: 'Es un perrito cariñoso que se sube a tu pierna para desmostrarte todo su amor. No se lleva bien con las gatas',
                     photo_name: "Sitito picture",
                     photo_url: values[0],
-                    location: undefined,
-                    neighborhood: undefined,
+                    location: { type: 'Point', coordinates: [-3.6749371, 40.3923761] },
+                    // neighborhood: undefined,
                     found_by: userId,
                     shelter: shelterId
                 }, {
@@ -135,8 +135,8 @@ Axios.get('https://randomuser.me/api/', {
                     description: 'Es una gatita muy tranquila que sólo quiere jugar. Cariñosa y nada territorial',
                     photo_name: "Raluquita picture",
                     photo_url: values[1],
-                    location: undefined,
-                    neighborhood: undefined,
+                    location: { type: 'Point', coordinates: [-3.6749371, 40.3923761] },
+                    // neighborhood: undefined,
                     found_by: userId,
                     shelter: shelterId
                 }, {
@@ -147,8 +147,8 @@ Axios.get('https://randomuser.me/api/', {
                     description: 'Super Can, ¡¡llevatelo a casa!!',
                     photo_name: "Toby picture",
                     photo_url: values[0],
-                    location: undefined,
-                    neighborhood: undefined,
+                    location: { type: 'Point', coordinates: [-3.6742326, 40.3922639] },
+                    // neighborhood: undefined,
                     found_by: userId,
                     shelter: shelterId
                 }, {
@@ -159,8 +159,8 @@ Axios.get('https://randomuser.me/api/', {
                     description: 'Es como un tigre pero más cariñoso.',
                     photo_name: "Memphis picture",
                     photo_url: values[1],
-                    location: undefined,
-                    neighborhood: undefined,
+                    location: { type: 'Point', coordinates: [-3.709508, 40.4190058] },
+                    // neighborhood: undefined,
                     found_by: userId,
                     shelter: shelterId
                 }, {
@@ -171,8 +171,8 @@ Axios.get('https://randomuser.me/api/', {
                     description: 'Terrible amoroso perrote',
                     photo_name: "Conan picture",
                     photo_url: values[0],
-                    location: undefined,
-                    neighborhood: undefined,
+                    location: { type: 'Point', coordinates: [-3.6966659, 40.5012179] },
+                    // neighborhood: undefined,
                     found_by: userId,
                     shelter: shelterId
                 }, {
@@ -183,8 +183,8 @@ Axios.get('https://randomuser.me/api/', {
                     description: 'La reina de la casa',
                     photo_name: "Princesa picture",
                     photo_url: values[1],
-                    location: undefined,
-                    neighborhood: undefined,
+                    location: { type: 'Point', coordinates: [-3.6408218, 40.4392338] },
+                    // neighborhood: undefined,
                     found_by: userId,
                     shelter: shelterId
                 }]
@@ -194,9 +194,11 @@ Axios.get('https://randomuser.me/api/', {
                     .then(() => {
                         Pet
                             .create(fakePets)
-                        console.log("FAKE PETS CREATED!!!")
-                            // process.exit(0);
-                            // mongoose.disconnect()
+                            .then(() => {
+                                console.log("FAKE PETS CREATED!!!")
+                                mongoose.disconnect()
+                            })
+                            // 
                     })
             })
     })

@@ -17,6 +17,15 @@ router.get('/list', (req, res, next) => {
         });
 });
 
+router.get('/list/breed/:breed', (req, res, next) => {
+    Pet.find({ type_animal: { $eq: req.params.breed } })
+        .then(pets => {
+            res.render("lostPets", { pets })
+        }).catch((err) => {
+            console.log(err)
+        });
+});
+
 router.get('/add', (req, res, next) => {
     res.render("add")
 });
@@ -110,11 +119,37 @@ router.post("/lostPets", (req, res) => {
 });
 
 router.get('/json', (req, res, next) => {
-    Place.find().then(pets => {
-        res.json({ pets })
-    }).catch((err) => {
-        console.log(err)
-    });
+    Pet
+        .find().then(pets => {
+            res.json({ pets })
+        }).catch((err) => {
+            console.log(err)
+        });
+});
+
+router.get('/lostpetsmap/:lng/:lat/:distance', (req, res, next) => {
+    // {location:{$near: {$geometry: {type: "Point",coordinates: [-3.6749371, 40.3923761]},$maxDistance: 1000,$minDistance: 10}}}    debugger
+    console.log("+-+-+-+-+-+-+--+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
+    console.log(req.params.lng)
+    console.log(req.params.lat)
+    console.log(req.params.distance)
+    debugger
+    // db.coleccion.find({location : {$near : [-3.6749371, 40.3923761 , $maxDistance : 1000}})
+    Pet
+        .find({
+            location: {
+                $near: [-3.6749371, 40.3923761],
+                $maxDistance: 1000
+            }
+        }).then(pets => {
+            res.json({ pets })
+        }).catch((err) => {
+            console.log(err)
+        });
 });
 
 module.exports = router;
+
+// location: { $near: [-74, 40], $maxDistance: 10 }
+
+// { location: { $near: [coordinates.lng, coordinates.lat], $maxDistance: req.params.distance } }
