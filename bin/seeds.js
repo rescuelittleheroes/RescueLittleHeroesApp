@@ -80,6 +80,7 @@ Axios.get('https://randomuser.me/api/', {
                     .create(users)
                     .then((newuser) => {
                         userId = newuser[0]._id;
+                        console.log("FAKE USERS CREATED!!!")
                     })
             })
     })
@@ -90,6 +91,7 @@ Axios.get('https://randomuser.me/api/', {
                     .create(fakeShelters)
                     .then((newshelter) => {
                         shelterId = newshelter[0]._id;
+                        console.log("FAKE SHELTERS CREATED!!!")
                     })
 
             })
@@ -132,6 +134,54 @@ Axios.get('https://randomuser.me/api/', {
                     wasFounded: false,
                     description: 'Es una gatita muy tranquila que sólo quiere jugar. Cariñosa y nada territorial',
                     photo_name: "Raluquita picture",
+                    photo_url: values[1],
+                    location: undefined,
+                    neighborhood: undefined,
+                    found_by: userId,
+                    shelter: shelterId
+                }, {
+                    name: 'Toby',
+                    type_animal: 'Dog',
+                    size: 'Medium',
+                    wasFounded: false,
+                    description: 'Super Can, ¡¡llevatelo a casa!!',
+                    photo_name: "Toby picture",
+                    photo_url: values[0],
+                    location: undefined,
+                    neighborhood: undefined,
+                    found_by: userId,
+                    shelter: shelterId
+                }, {
+                    name: 'Memphis',
+                    type_animal: 'Cat',
+                    size: 'Big',
+                    wasFounded: false,
+                    description: 'Es como un tigre pero más cariñoso.',
+                    photo_name: "Memphis picture",
+                    photo_url: values[1],
+                    location: undefined,
+                    neighborhood: undefined,
+                    found_by: userId,
+                    shelter: shelterId
+                }, {
+                    name: 'Conan',
+                    type_animal: 'Dog',
+                    size: 'Small',
+                    wasFounded: false,
+                    description: 'Terrible amoroso perrote',
+                    photo_name: "Conan picture",
+                    photo_url: values[0],
+                    location: undefined,
+                    neighborhood: undefined,
+                    found_by: userId,
+                    shelter: shelterId
+                }, {
+                    name: 'Princesa',
+                    type_animal: 'Cat',
+                    size: 'Small',
+                    wasFounded: false,
+                    description: 'La reina de la casa',
+                    photo_name: "Princesa picture",
                     photo_url: values[1],
                     location: undefined,
                     neighborhood: undefined,
