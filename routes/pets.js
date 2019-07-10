@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 router.get('/list', (req, res, next) => {
     Pet.find()
         .then(pets => {
-            res.render("list", { pets })
+            res.render("lostPets", { pets })
         }).catch((err) => {
             console.log(err)
         });
@@ -62,7 +62,7 @@ router.post('/:id/delete', (req, res, next) => {
 router.get('/edit/:id', (req, res, next) => {
     Pet.findOne({ _id: req.params.id })
         .then(pet => {
-            res.render("edit", { pet })
+            res.render("pets-edit", { pet })
         }).catch((err) => {
             console.log(err)
         });
