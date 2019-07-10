@@ -10,8 +10,18 @@ const PetSchema = Schema({
     description: String,
     photo_name: String,
     photo_url: String,
-    location: { type: { type: String }, coordinates: [Number] },
-    neighborhood: { type: { type: String }, coordinates: [Number] },
+    location: {
+        type: {
+            type: String, // Don't do `{ location: { type: String } }`
+            enum: ['Point'], // 'location.type' must be 'Point'
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
+    // neighborhood: { type: { type: String }, coordinates: [Number] },
     found_by: { type: Schema.Types.ObjectId, ref: "User" },
     shelter: { type: Schema.Types.ObjectId, ref: "Shelter" }
 }, {
