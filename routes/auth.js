@@ -44,13 +44,12 @@ router.post("/signup", (req, res, next) => {
 
         const newUser = new User({
             username,
-            password: hashPass
-                // username: "test",
-                // email: "prueba@gmail.com",
+            password: hashPas,
+            email: req.body.email,
+            surname: req.body.surname
                 // telephoneNumber: "555987098",
                 // password: "test",
                 // name: "TestName",
-                // surname: "TestName",
                 // isAdmin: true,
                 // role: "Admin"
         });
@@ -111,21 +110,21 @@ router.post("/edit-place", (req, res) => {
 
 
 router.get(
-  "/auth/slack/callback",
-  passport.authenticate("slack",  {
-    successRedirect: "/shelters",
-    failureRedirect: "/"
-  })
+    "/auth/slack/callback",
+    passport.authenticate("slack", {
+        successRedirect: "/shelters",
+        failureRedirect: "/"
+    })
 );
 
 
 router.get(
-  "/auth/instagram/callback",
-  passport.authenticate("instagram", { failureRedirect: "/login" }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect("/");
-  }
+    "/auth/instagram/callback",
+    passport.authenticate("instagram", { failureRedirect: "/login" }),
+    function(req, res) {
+        // Successful authentication, redirect home.
+        res.redirect("/");
+    }
 );
 
 router.get("/auth/github", passport.authenticate("github"));

@@ -15,7 +15,7 @@ const flash = require("connect-flash");
 
 
 mongoose
-    .connect(process.env.BBDD_ATLAS, { useNewUrlParser: true })
+    .connect(process.env.BBDD_LOCAL, { useNewUrlParser: true })
     .then(x => {
         console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })
@@ -89,6 +89,3 @@ const ShelterRoutes = require('./routes/shelters');
 app.use('/shelter', ShelterRoutes);
 
 module.exports = app;
-
-
-

@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 router.get('/list', (req, res, next) => {
     Shelter.find()
         .then(shelters => {
-            res.render("list", { shelters })
+            res.render("animalShelters", { shelters })
         }).catch((err) => {
             console.log(err)
         });

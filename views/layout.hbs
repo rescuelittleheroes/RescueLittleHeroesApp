@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,55 +11,53 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css" />
- 
 </head>
-<body>
 
-  
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <img class="navLogo" src="../images/Hero.svg" width="68" height="8">
-          RescueLittleHeroes
-        </a>
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-          data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-        
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="/lostPets">
-              Lost Pets
-            </a>
-          </div>
-          <a href="/animalShelters" class="navbar-item">
-            Animal Shelters
-          </a>
-          <a href="/auth/signup" class="navbar-item">
-           Sign Up
-          </a>
-          <a href="/auth/login" class="navbar-item">
-           Login
+<body>
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img class="navLogo" src="../images/Hero.svg" width="68" height="8">
+        Rescue Little Heroes
+      </a>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+        data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="/lostPets">
+            Lost Pets
           </a>
         </div>
-        <div class="navbar-item">
-          <div class="buttons">
-            <a href="/logout" class="button is-info">
-              Log out
-            </a>
-          </div>
+        <a href="/shelter/list" class="navbar-item">
+          Animal Shelters
+        </a>
+        <a href="/auth/signup" class="navbar-item">
+          Sign Up
+        </a>
+        <a href="/auth/login" class="navbar-item">
+          Login
+        </a>
+      </div>
+      <div class="navbar-item">
+        <div class="buttons">
+          <a href="/auth/logout" class="button is-info">
+            Log out
+          </a>
         </div>
       </div>
-      </div>
-    </nav>
-  
-    {{{body}}}
-  
+    </div>
+    </div>
+  </nav>
+
+  {{{body}}}
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   {{!-- s --}}
   <!-- Rev slider js -->
@@ -80,6 +79,7 @@
   <script src="js/smoothscroll.js"></script>
   <script src="vendors/circle-bar/circle-progress.min.js"></script>
   <script src="vendors/circle-bar/plugins.js"></script>
+
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
@@ -90,10 +90,14 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js"></script>
   
+
+
+
   <script src="js/circle-active.js"></script>
   <script src="js/theme.js"></script>
 
   <script src="https://kit.fontawesome.com/4fe50f3556.js"></script>
   <script src="/javascripts/script.js"></script>
 </body>
+
 </html>

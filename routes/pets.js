@@ -34,7 +34,7 @@ router.post('/add', uploadCloud.single('photo'), (req, res, next) => {
             photo_url: "https://www.hogarmania.com/archivos/201705/mascotas-perros-razas-caniche-668x400x80xX.jpg", //req.file.url,
             location: ["40.3885195", "-3.6695838"],
             neighborhood: ["Puente Vallecas"],
-            founded_by: req.user.id
+            found_by: req.user.id
         })
         .then(newPet => res.redirect("/pet/list"))
         .catch((err) => {
@@ -84,7 +84,7 @@ router.post("/edit-place", (req, res) => {
                 coordinates: [+req.body.longitude, +req.body.latitude]
             },
             neighborhood: ["Puente Vallecas"],
-            founded_by: req.user.id
+            found_by: req.user.id
         })
         .then(updatedPet => {
             res.redirect("/")
