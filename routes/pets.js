@@ -5,7 +5,7 @@ const uploadCloud = require('../config/cloudinary.js');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-    res.render('index');
+    res.render('lostPets');
 });
 
 router.get('/list', (req, res, next) => {
