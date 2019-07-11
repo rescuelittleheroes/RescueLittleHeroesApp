@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Pet = require("../models/Pets")
 const uploadCloud = require('../config/cloudinary.js');
+const ensureLogin = require("connect-ensure-login");
 
 /* GET home page */
 // router.get('/', (req, res, next) => {
@@ -11,8 +12,16 @@ const uploadCloud = require('../config/cloudinary.js');
 router.get('/list', (req, res, next) => {
     Pet.find({})
         .then(pets => {
-            // console.log(pets)
-            res.render("lostPets", { pets })
+            if (req.isAuthenticated()) {
+                pets = pets.map(pet => {
+                    if (req.user.role === 'Admin') pet.isAdmin = true;
+                    return pet
+                })
+                res.render("lostPets", { pets })
+            } else {
+                console.log("TODO EL DIOS LO VE")
+                res.render("lostPets", { pets })
+            }
         }).catch((err) => {
             console.log(err)
         });
@@ -32,23 +41,23 @@ router.get('/add', (req, res, next) => {
 });
 
 router.post("/add", uploadCloud.single("photo_url"), (req, res, next) => {
-  Pet.create({
-    name: req.body.name,
-    type_animal: req.body.type_animal,
-    size: req.body.size,
-    // wasFounded: req.body.wasFounded,
-    description: req.body.description,
+    Pet.create({
+            name: req.body.name,
+            type_animal: req.body.type_animal,
+            size: req.body.size,
+            // wasFounded: req.body.wasFounded,
+            description: req.body.description,
 
-    photo_url: req.file.url
-  
-  })
-    .then(newPet => {
-      // console.log(newPet)
-      res.redirect("/pet/list");
-    })
-    .catch(err => {
-      console.log(err);
-    });
+            photo_url: req.file.url
+
+        })
+        .then(newPet => {
+            // console.log(newPet)
+            res.redirect("/pet/list");
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 router.get('/detail/:id', (req, res, next) => {
@@ -62,7 +71,7 @@ router.get('/detail/:id', (req, res, next) => {
 });
 
 // router.post('/:id/delete', (req, res, next) => {
-   
+
 //     Pet.findByIdAndRemove({ _id: req.params.id })
 //         .then(petDelete => res.redirect("/"))
 //         .catch((err) => {
@@ -93,30 +102,30 @@ router.put("/petUpdate", (req, res) => {
 
 router.post("/lostPets", (req, res) => {
 
-  Pet.findByIdAndUpdate(req.body._id, {
-    // shelter: req.body.shelter,
-    name: req.body.name,
-    // type_animal: "Dog",
-    size: req.body.size
+    Pet.findByIdAndUpdate(req.body._id, {
+            // shelter: req.body.shelter,
+            name: req.body.name,
+            // type_animal: "Dog",
+            size: req.body.size
 
-    // wasFounded: false,
-    // description: "Encontrado pequeño caniche blanco",
-    // photo_name: "original name", //req.file.originalname,
-    // photo_url:
-    //   "https://www.hogarmania.com/archivos/201705/mascotas-perros-razas-caniche-668x400x80xX.jpg", //req.file.url,
-    // location: {
-    //   type: "Point",
-    //   coordinates: [+req.body.longitude, +req.body.latitude]
-    // },
-    // neighborhood: ["Puente Vallecas"],
-    // found_by: req.user.id
-  })
-    .then(updatedPet => {
-      res.redirect("/");
-    })
-    .catch(err => {
-      console.log(err);
-    });
+            // wasFounded: false,
+            // description: "Encontrado pequeño caniche blanco",
+            // photo_name: "original name", //req.file.originalname,
+            // photo_url:
+            //   "https://www.hogarmania.com/archivos/201705/mascotas-perros-razas-caniche-668x400x80xX.jpg", //req.file.url,
+            // location: {
+            //   type: "Point",
+            //   coordinates: [+req.body.longitude, +req.body.latitude]
+            // },
+            // neighborhood: ["Puente Vallecas"],
+            // found_by: req.user.id
+        })
+        .then(updatedPet => {
+            res.redirect("/");
+        })
+        .catch(err => {
+            console.log(err);
+        });
 
     console.log(req.body._id);
     Pet.findByIdAndUpdate(req.body._id, {
@@ -147,13 +156,13 @@ router.post("/lostPets", (req, res) => {
 });
 
 router.delete("/petDeletion/:petId", (req, res) => {
-  Pet.findByIdAndDelete(req.params.petId)
-    .then(() => {
-      res.json({ deleted: true });
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    Pet.findByIdAndDelete(req.params.petId)
+        .then(() => {
+            res.json({ deleted: true });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 router.get('/json', (req, res, next) => {
