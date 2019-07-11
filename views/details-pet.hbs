@@ -1,0 +1,32 @@
+<style>
+  #wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  #pet-picture {
+    width: 200px;
+  }
+
+  p {
+    font-size: 25px;
+  }
+
+  span {
+    font-weight: bold;
+  }
+</style>
+
+<h1>{{pet.name}}</h1>
+<div id="wrapper">
+  <section>
+    <img id="pet-picture" src="{{pet.photo_url}}" alt="{{pet.photo_name}}">
+  </section>
+  <section id="data-info">
+    <p><span>Type of animal: </span> {{pet.type_animal}}</p>
+    <p><span>Size: </span> {{pet.size}}</p>
+    <p><span>Description:</span></p>
+    <p>{{pet.description}}</p>
+    <p><span>Found the day: </span>{{pet.created_at}}</p>
+  </section>
+</div>
