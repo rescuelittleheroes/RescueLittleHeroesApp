@@ -76,7 +76,16 @@ FORMULARIO FILTRO--}}
 
           <script>
 
-            
+            function deletePet() {
+              var currentPetId = document.querySelector("#modalEdit input[name=id]").value
+              var URL = "http://localhost:3000/pet/petDeletion/" + currentPetId
+         
+              axios.delete(URL).then(deletedInfo => {
+                location.href = "http://localhost:3000/pet/list"
+              })
+            }
+
+
             function edit(id) {
 
               axios
@@ -99,7 +108,8 @@ FORMULARIO FILTRO--}}
                 })
             }
 
-         
+
+
 
 
           </script>
@@ -140,41 +150,44 @@ FORMULARIO FILTRO--}}
             </button>
           </div>
           <div class="modal-body mx-3" id="hola">
-            
-              <input type="text" id="formNameEdit" name="id" class="form-control validate">
+
+            <input type="text" id="formNameEdit" name="id" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="formNameEdit"></label>
+          </div>
+
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              <input type="text" id="formNameEdit" name="name" placeholder="name" class="form-control validate">
               <label data-error="wrong" data-success="right" for="formNameEdit"></label>
-            </div> 
-
-            <div class="modal-body mx-3">
-              <div class="md-form mb-5">
-                <input type="text" id="formNameEdit" name="name" placeholder="name" class="form-control validate" >
-                <label data-error="wrong" data-success="right" for="formNameEdit" ></label>
-              </div>
-
-              <div class="md-form mb-5">
-                <input type="text" id="formPositionEdit" name="size" placeholder="Size" class="form-control validate">
-                <label data-error="wrong" data-success="right" for="formPositionEdit" ></label>
-              </div>
-
-              {{!-- <div class="md-form mb-5">
-            <input type="text" id="formOfficeEdit" name="shelter" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="formOfficeEdit">Shelter</label>
-          </div> --}}
-
-
             </div>
 
-            <div class="modal-footer d-flex justify-content-center editInsideWrapper">
-              <button class="btn btn-outline-secondary btn-block editInside" onclick="updatePet()" data-dismiss="modal">Edit
-                Pet
-                <i class="fas fa-paper-plane-o ml-1"></i>
-              </button>
+            <div class="md-form mb-5">
+              <input type="text" id="formPositionEdit" name="size" placeholder="Size" class="form-control validate">
+              <label data-error="wrong" data-success="right" for="formPositionEdit"></label>
             </div>
           </div>
-        </div>
-      </div>
 
+          <div class="modal-footer d-flex justify-content-center editInsideWrapper">
+            <button class="btn btn-outline-secondary btn-block editInside" onclick="updatePet()"
+              data-dismiss="modal">Edit
+              Pet
+              <i class="fas fa-paper-plane-o ml-1"></i>
+            </button>
+          </div>
   </form>
+
+  <div class="modal-footer d-flex justify-content-center editInsideWrapper">
+    <button class="btn btn-outline-secondary btn-block editInside" onclick="deletePet()" data-dismiss="modal">
+      Delete Pet
+      <i class="fas fa-paper-plane-o ml-1"></i>
+    </button>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+
 
 
 
