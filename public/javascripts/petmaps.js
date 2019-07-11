@@ -8,12 +8,12 @@ function startMap() {
     user_location = { lat: 41.3977381, lng: 2.190471916 };
     // Initialize the map
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 9,
+        zoom: 12,
         center: new google.maps.LatLng(user_location.lat, user_location.lng)
     });
     //first at all I get the user position
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition((position) => {
             user_location = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -48,15 +48,9 @@ function showLostPetsInMap(lng, lat, dist) {
             responseType: 'json'
         })
         .then((res) => {
-            console.log("***********************************")
-            console.log(res)
             cleanMarkers()
             if (res.data.pets.length > 0) {
                 res.data.pets.forEach(pet => {
-                    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-                    console.log("latitud pet: " + pet.location.coordinates[0])
-                    console.log("longitud pet: " + pet.location.coordinates[1])
-                    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
                     const petMarker = new google.maps.Marker({
                         position: {
                             lat: +pet.location.coordinates[1],
@@ -67,7 +61,22 @@ function showLostPetsInMap(lng, lat, dist) {
                         animation: google.maps.Animation.DROP,
                         title: `${pet.name} (${pet.type_animal})`
                     });
+                    let contentString = `<style>
+                        img{
+                            border-radius: 50%;
+                        }
+                    </style>
+                    <h5> ${pet.name} </h5>
+                    <img src="${pet.photo_url}" alt="${pet.photo_name}" height="100" width="100">
+                    <a href="/pet/list">listado</a>`
+                    let infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                    petMarker.addListener('click', function() {
+                        infowindow.open(map, petMarker);
+                    });
                     markers.push(petMarker);
+
                 });
             }
         })
