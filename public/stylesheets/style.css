@@ -6,6 +6,10 @@ body {
 a {
   color: #00B7FF; }
 
+#map {
+  height: 50vh;
+  width: 50vw; }
+
 .title {
   font-size: 4.7rem;
   text-align: center;
@@ -559,9 +563,6 @@ span-pets {
   display: inline-flex;
   padding: 50px;
   margin: 0 auto; }
-
-.flex-form-wrapper {
-  display: flex; }
 
 .btn.btn-sm {
   padding: .5rem 1.6rem;

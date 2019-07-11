@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/css/mdb.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -19,7 +19,7 @@
   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
-        <img class="navLogo" src="../images/Hero.svg" width="68" height="8">
+        <img class="navLogo" src="/images/Hero.svg" width="68" height="8">
         Rescue Little Heroes
       </a>
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -32,11 +32,11 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
 
-       
-          <a class="navbar-item" href="/pet/list">
-            Lost Pets
-          </a>
-   
+
+        <a class="navbar-item" href="/pet/list">
+          Lost Pets
+        </a>
+
         <a href="/shelter/list" class="navbar-item">
           Animal Shelters
         </a>
@@ -49,8 +49,13 @@
       </div>
       <div class="navbar-item">
         <div class="buttons">
+
           <a href="/pet/add" class="button is-info-animals" id="animals-btn">
            Añadir Mascota
+
+          <a href="" class="button is-info-animals" id="animals-btn">
+            Añadir Mascota
+
           </a>
         </div>
       </div>
@@ -73,11 +78,13 @@
   <!-- Bootstrap tooltips -->
   {{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script> --}}
   <!-- Bootstrap core JavaScript -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA00_tJSOxaMHDNlehMVJB_hXRhADTAdMk"> </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/petmaps.js"></script>
   <script type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js"></script>
-  
 
   <script src="https://kit.fontawesome.com/4fe50f3556.js"></script>
   <script src="/javascripts/script.js"></script>
