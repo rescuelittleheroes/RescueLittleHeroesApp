@@ -5,7 +5,7 @@ let markers = []
 startMap();
 
 function startMap() {
-    user_location = { lat: 41.3977381, lng: 2.190471916 };
+    user_location = { lat: 40.4167754, lng: -3.7037902 }; //madrid coordinates to start
     // Initialize the map
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
@@ -38,7 +38,6 @@ function startMap() {
     } else {
         console.log('Browser does not support geolocation.');
     }
-
     showLostPetsInMap(user_location.lng, user_location.lat, radiousOfAction)
 }
 
@@ -62,13 +61,30 @@ function showLostPetsInMap(lng, lat, dist) {
                         title: `${pet.name} (${pet.type_animal})`
                     });
                     let contentString = `<style>
-                        img{
+                        #pet-pict{
                             border-radius: 50%;
                         }
-                    </style>
-                    <h5> ${pet.name} </h5>
-                    <img src="${pet.photo_url}" alt="${pet.photo_name}" height="100" width="100">
-                    <a href="/pet/list">listado</a>`
+                        #wrapper{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            align-content: center;
+                        }
+                        #link-details{
+                            text-decoration: none;
+                        }
+                        </style>
+                    <body>
+                        <section id="wrapper">
+                            <div id="data-pet">
+                                <h3> ${pet.name} </h3>
+                                <img id="pet-pict" src="${pet.photo_url}" alt="${pet.photo_name}" height="100" width="100">
+                            </div>
+                            <div>
+                                <button><a id="link-details" href="/pet/detail/${pet._id}">Details</a></button>
+                            </div>
+                        </wrapper>
+                    </body>`
                     let infowindow = new google.maps.InfoWindow({
                         content: contentString
                     });
@@ -76,7 +92,6 @@ function showLostPetsInMap(lng, lat, dist) {
                         infowindow.open(map, petMarker);
                     });
                     markers.push(petMarker);
-
                 });
             }
         })

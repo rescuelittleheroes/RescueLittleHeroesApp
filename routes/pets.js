@@ -54,7 +54,7 @@ router.post('/add', uploadCloud.single('photo'), (req, res, next) => {
 router.get('/detail/:id', (req, res, next) => {
     Pet.findOne({ _id: req.params.id })
         .then(pet => {
-            res.render("detail", { pet })
+            res.render("details-pet", { pet })
         }).catch((err) => {
             console.log(err)
         });
@@ -128,10 +128,6 @@ router.get('/json', (req, res, next) => {
 });
 
 router.get('/lostpetsmap/:lng/:lat/:distance', (req, res, next) => {
-    console.log("+-+-+-+-+-+-+--+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
-    console.log("longitud: " + req.params.lng)
-    console.log("latitud: " + req.params.lat)
-    console.log("distance: " + req.params.distance)
     Pet
         .find({
             location: {
@@ -145,7 +141,6 @@ router.get('/lostpetsmap/:lng/:lat/:distance', (req, res, next) => {
                 }
             }
         }).then(pets => {
-            console.log("=======================================")
             console.log(pets)
             res.json({ pets })
         }).catch((err) => {
@@ -154,15 +149,3 @@ router.get('/lostpetsmap/:lng/:lat/:distance', (req, res, next) => {
 });
 
 module.exports = router;
-
-
-// db.pets.find({location: {
-//     $near: {
-//       $geometry: {
-//           type: "Point",
-//           coordinates: [-3.6749371, 40.3923761]
-//       },
-//       $maxDistance: 1000000,
-//       $minDistance: 0
-//   }
-//   }})
