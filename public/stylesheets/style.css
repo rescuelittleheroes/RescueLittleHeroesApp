@@ -611,4 +611,10 @@ span-pets {
   text-align: center !important;
   font-size: 1.5rem; }
 
+#user-btn {
+  background-color: #3A50E8;
+  border-color: transparent;
+  color: #fff;
+  font-size: 1.4rem; }
+
 /*# sourceMappingURL=style.css.map */

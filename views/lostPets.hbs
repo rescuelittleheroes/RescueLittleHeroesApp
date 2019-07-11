@@ -11,7 +11,7 @@ FORMULARIO FILTRO--}}
 
     <div class="input-group md-form form-sm form-1 pl-0">
       <div class="input-group-prepend">
-        <span class="input-group-text cyan lighten-2" id="basic-text1"><i class="fas fa-search text-white"
+        <span class="input-group-text cyan lighten-2" id="basic-text1"><i onclick="filterPet()"class="fas fa-search text-white"
             aria-hidden="true"></i></span>
       </div>
       <input id="size-id" class="form-control my-0 py-1" type="text" name="size" placeholder="Size" aria-label="Search">
@@ -77,14 +77,16 @@ FORMULARIO FILTRO--}}
           <script>
 
             function deletePet() {
-              var currentPetId = document.querySelector("#modalEdit input[name=id]").value
-              var URL = "http://localhost:3000/pet/petDeletion/" + currentPetId
+              let currentPetId = document.querySelector("#modalEdit input[name=id]").value
+              let URL = "http://localhost:3000/pet/petDeletion/" + currentPetId
          
               axios.delete(URL).then(deletedInfo => {
                 location.href = "http://localhost:3000/pet/list"
               })
             }
 
+  
+ 
 
             function edit(id) {
 
@@ -105,6 +107,8 @@ FORMULARIO FILTRO--}}
                   name: document.querySelector("#modalEdit input[name=name]").value,
                   id: document.querySelector("#modalEdit input[name=id]").value,
                   size: document.querySelector("#modalEdit input[name=size]").value
+                }).then(updateInfo=>{
+                  location.href = "http://localhost:3000/pet/list"
                 })
             }
 

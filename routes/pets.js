@@ -43,7 +43,7 @@ router.post("/add", uploadCloud.single("photo_url"), (req, res, next) => {
   
   })
     .then(newPet => {
-      // console.log(newPet)
+      console.log(newPet)
       res.redirect("/pet/list");
     })
     .catch(err => {
@@ -145,6 +145,8 @@ router.post("/lostPets", (req, res) => {
         });
 
 });
+
+//DELETE PETS
 
 router.delete("/petDeletion/:petId", (req, res) => {
   Pet.findByIdAndDelete(req.params.petId)
