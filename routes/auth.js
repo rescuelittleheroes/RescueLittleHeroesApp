@@ -16,7 +16,7 @@ router.get("/login", (req, res, next) => {
 
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/auth/login",
+    failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true
 }));
@@ -28,6 +28,7 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
+
     if (username === "" || password === "") {
         res.render("auth/signup", { message: "Indicate username and password" });
         return;
@@ -56,6 +57,7 @@ router.post("/signup", (req, res, next) => {
 
         newUser.save()
             .then(() => {
+                console.log("HE CREADO EL USUARIOOOOOOOOOOO!!!!!!")
                 res.redirect("/");
             })
             .catch(err => {
@@ -110,18 +112,13 @@ router.post("/edit-place", (req, res) => {
 
 
 
-router.get(
-    "/auth/slack/callback",
-    passport.authenticate("slack", {
-        successRedirect: "/shelters",
-        failureRedirect: "/"
-    })
-);
+router.get("/auth/slack/callback", passport.authenticate("slack", {
+    successRedirect: "/shelters",
+    failureRedirect: "/"
+}));
 
 
-router.get(
-    "/auth/instagram/callback",
-    passport.authenticate("instagram", { failureRedirect: "/login" }),
+router.get("/auth/instagram/callback", passport.authenticate("instagram", { failureRedirect: "/login" }),
     function(req, res) {
         // Successful authentication, redirect home.
         res.redirect("/");
@@ -130,13 +127,11 @@ router.get(
 
 router.get("/auth/github", passport.authenticate("github"));
 
-router.get(
-  "/auth/github/callback",
-  passport.authenticate("github", { failureRedirect: "/login" }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect("/");
-  }
+router.get("/auth/github/callback", passport.authenticate("github", { failureRedirect: "/login" }),
+    function(req, res) {
+        // Successful authentication, redirect home.
+        res.redirect("/");
+    }
 );
 
 
