@@ -4,9 +4,9 @@ const Shelter = require("../models/Shelter")
 const uploadCloud = require('../config/cloudinary.js');
 
 /* GET home page */
-router.get('/', (req, res, next) => {
-    res.render('animalShelters');
-});
+// router.get('/', (req, res, next) => {
+//     res.render('animalShelters');
+// });
 
 router.get('/list', (req, res, next) => {
     Shelter.find()
@@ -63,7 +63,7 @@ router.get('/edit/:id', (req, res, next) => {
     //     }).catch((err) => {
     //         console.log(err)
     //     });
-res.render("shelters-edit");
+    res.render("shelters-edit");
 });
 router.post("/edit-place", (req, res) => {
     Shelter
