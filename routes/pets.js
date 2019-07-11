@@ -41,23 +41,23 @@ router.get('/add', (req, res, next) => {
 });
 
 router.post("/add", uploadCloud.single("photo_url"), (req, res, next) => {
-    Pet.create({
-            name: req.body.name,
-            type_animal: req.body.type_animal,
-            size: req.body.size,
-            // wasFounded: req.body.wasFounded,
-            description: req.body.description,
+  Pet.create({
+    name: req.body.name,
+    type_animal: req.body.type_animal,
+    size: req.body.size,
+    // wasFounded: req.body.wasFounded,
+    description: req.body.description,
 
-            photo_url: req.file.url
-
-        })
-        .then(newPet => {
-            // console.log(newPet)
-            res.redirect("/pet/list");
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    photo_url: req.file.url
+  
+  })
+    .then(newPet => {
+      console.log(newPet)
+      res.redirect("/pet/list");
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
 
 router.get('/detail/:id', (req, res, next) => {
@@ -154,6 +154,8 @@ router.post("/lostPets", (req, res) => {
         });
 
 });
+
+//DELETE PETS
 
 router.delete("/petDeletion/:petId", (req, res) => {
     Pet.findByIdAndDelete(req.params.petId)
