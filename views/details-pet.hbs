@@ -4,8 +4,15 @@
     align-items: center;
   }
 
+  #name-pet {
+    padding: 10px;
+    font-weight: bold;
+    background-color: rgb(170, 238, 170);
+  }
+
   #pet-picture {
     width: 200px;
+    margin: 20px;
   }
 
   p {
@@ -17,7 +24,7 @@
   }
 </style>
 
-<h1>{{pet.name}}</h1>
+<h1 id="name-pet">{{pet.name}}</h1>
 <div id="wrapper">
   <section>
     <img id="pet-picture" src="{{pet.photo_url}}" alt="{{pet.photo_name}}">
