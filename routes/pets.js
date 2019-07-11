@@ -197,4 +197,22 @@ router.get('/lostpetsmap/:lng/:lat/:distance', (req, res, next) => {
         });
 });
 
+router.get("/list/:size", (req, res) => {
+    let {size} = req.params
+    console.log(size)
+  Pet.find({ size })
+    .then(pets => {
+      if (size === "Small"){
+          res.render("smallPets",{pets})
+      }
+      if (size === "Medium") {
+        res.render("mediumPets", { pets });
+      }
+      if (size === "Big") {
+        res.render("bigPets", { pets });
+      }
+    })
+    .catch(err => console.log(err));
+});
+
 module.exports = router;
