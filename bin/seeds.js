@@ -36,7 +36,7 @@ let users = [{
         Role: "Admin"
     },
     {
-        username: "Francho",
+        username: "francho@themachine.es",
         email: "francho@themachine.es",
         telephoneNumber: "4568902",
         password: bcrypt.hashSync("1234", bcrypt.genSaltSync(bcryptSalt)),
