@@ -33,7 +33,7 @@ router.post('/add', uploadCloud.single('photo'), (req, res, next) => {
             phone: "789654321",
             email: "email@gmail.com",
         })
-        .then(newShelter => res.redirect("/shelter/list"))
+        .then(newShelter => res.redirect("/shelter/add"))
         .catch((err) => {
             console.log(err)
         })

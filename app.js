@@ -79,6 +79,9 @@ require('./passport')(app);
 const index = require('./routes/index');
 app.use('/', index);
 
+const userRoute = require("./routes/users");
+app.use("/", userRoute);
+
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
@@ -87,5 +90,6 @@ app.use('/pet', petRoutes);
 
 const ShelterRoutes = require('./routes/shelters');
 app.use('/shelter', ShelterRoutes);
+
 
 module.exports = app;
