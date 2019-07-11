@@ -59,6 +59,7 @@
 
 
 </script>
+
 <body>
   {{!-- 
 FORMULARIO FILTRO--}}
@@ -93,15 +94,14 @@ FORMULARIO FILTRO--}}
 
 
   <form>
- 
+
     <div class="form-group">
       <label for="exampleFormControlSelect1">Size</label>
       <select class="form-control" id="exampleFormControlSelect1" onchange="getSize(this.value)">
-        <option value="">All pets</option>
+        <option value="Small">Small</option>
         <option value="Big">Big</option>
         <option value="Medium">Medium</option>
-        <option value="Small">Small</option>
-        
+
       </select>
     </div>
   </form>
@@ -145,7 +145,7 @@ FORMULARIO FILTRO--}}
             </div>
           </div>
 
-         
+
           <div class="story" id="s0">
             <div class="info">
               <h3 class="h3-pets">{{this.name}}</h3>
