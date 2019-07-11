@@ -77,8 +77,8 @@ FORMULARIO FILTRO--}}
           <script>
 
             function deletePet() {
-              var currentPetId = document.querySelector("#modalEdit input[name=id]").value
-              var URL = "http://localhost:3000/pet/petDeletion/" + currentPetId
+              let currentPetId = document.querySelector("#modalEdit input[name=id]").value
+              let URL = "http://localhost:3000/pet/petDeletion/" + currentPetId
          
               axios.delete(URL).then(deletedInfo => {
                 location.href = "http://localhost:3000/pet/list"
@@ -105,6 +105,8 @@ FORMULARIO FILTRO--}}
                   name: document.querySelector("#modalEdit input[name=name]").value,
                   id: document.querySelector("#modalEdit input[name=id]").value,
                   size: document.querySelector("#modalEdit input[name=size]").value
+                }).then(updateInfo=>{
+                  location.href = "http://localhost:3000/pet/list"
                 })
             }
 
