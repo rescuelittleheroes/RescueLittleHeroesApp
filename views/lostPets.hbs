@@ -35,9 +35,6 @@ FORMULARIO FILTRO--}}
 
   </div>
 
-
-
-
   {{!-- FOTOS --}}
   <div class="wrap-container">
     {{#each pets}}
@@ -77,9 +74,10 @@ FORMULARIO FILTRO--}}
           <script>
 
             function deletePet() {
+
               let currentPetId = document.querySelector("#modalEdit input[name=id]").value
               let URL = "http://localhost:3000/pet/petDeletion/" + currentPetId
-         
+
               axios.delete(URL).then(deletedInfo => {
                 location.href = "http://localhost:3000/pet/list"
               })
@@ -117,18 +115,22 @@ FORMULARIO FILTRO--}}
 
 
           </script>
+
           <div class="story" id="s0">
             <div class="info">
               <h3 class="h3-pets">{{this.name}}</h3>
               <p class="p-pets"> {{this.description}}</p>
               <p class="p-pets">{{this.size}}</p>
+              {{#if isAdmin }}
               <div class="text-center show-onclick">
                 <a class="btn btn-info btn-rounded btn-sm" id="text-add" data-toggle="modal" data-target="#modalEdit"
                   onclick="edit('{{this._id}}')">Edit<i class="fas fa-plus-square ml-1"></i></a>
               </div>
+              {{/if}}
               {{!-- <p class="p-pets">Kitten - Male - Medium</p> --}}
             </div>
           </div>
+
         </div>
 
 
