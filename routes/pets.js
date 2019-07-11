@@ -19,7 +19,6 @@ router.get('/list', (req, res, next) => {
                 })
                 res.render("lostPets", { pets })
             } else {
-                console.log("TODO EL DIOS LO VE")
                 res.render("lostPets", { pets })
             }
         }).catch((err) => {
@@ -41,23 +40,23 @@ router.get('/add', (req, res, next) => {
 });
 
 router.post("/add", uploadCloud.single("photo_url"), (req, res, next) => {
-  Pet.create({
-    name: req.body.name,
-    type_animal: req.body.type_animal,
-    size: req.body.size,
-    // wasFounded: req.body.wasFounded,
-    description: req.body.description,
+    Pet.create({
+            name: req.body.name,
+            type_animal: req.body.type_animal,
+            size: req.body.size,
+            // wasFounded: req.body.wasFounded,
+            description: req.body.description,
 
-    photo_url: req.file.url
-  
-  })
-    .then(newPet => {
-      console.log(newPet)
-      res.redirect("/pet/list");
-    })
-    .catch(err => {
-      console.log(err);
-    });
+            photo_url: req.file.url
+
+        })
+        .then(newPet => {
+            console.log(newPet)
+            res.redirect("/pet/list");
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 router.get('/detail/:id', (req, res, next) => {
@@ -198,21 +197,21 @@ router.get('/lostpetsmap/:lng/:lat/:distance', (req, res, next) => {
 });
 
 router.get("/list/:size", (req, res) => {
-    let {size} = req.params
+    let { size } = req.params
     console.log(size)
-  Pet.find({ size })
-    .then(pets => {
-      if (size === "Small"){
-          res.render("smallPets",{pets})
-      }
-      if (size === "Medium") {
-        res.render("mediumPets", { pets });
-      }
-      if (size === "Big") {
-        res.render("bigPets", { pets });
-      }
-    })
-    .catch(err => console.log(err));
+    Pet.find({ size })
+        .then(pets => {
+            if (size === "Small") {
+                res.render("smallPets", { pets })
+            }
+            if (size === "Medium") {
+                res.render("mediumPets", { pets });
+            }
+            if (size === "Big") {
+                res.render("bigPets", { pets });
+            }
+        })
+        .catch(err => console.log(err));
 });
 
 module.exports = router;
