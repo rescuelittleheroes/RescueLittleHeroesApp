@@ -135,7 +135,7 @@ Axios.get('https://randomuser.me/api/', {
                     description: 'Es una gatita muy tranquila que sólo quiere jugar. Cariñosa y nada territorial',
                     photo_name: "Raluquita picture",
                     photo_url: values[1],
-                    location: { type: 'Point', coordinates: [-3.6749371, 40.3923761] },
+                    location: { type: 'Point', coordinates: [-3.6882051, 40.4122453] },
                     // neighborhood: undefined,
                     found_by: userId,
                     shelter: shelterId
@@ -147,7 +147,7 @@ Axios.get('https://randomuser.me/api/', {
                     description: 'Super Can, ¡¡llevatelo a casa!!',
                     photo_name: "Toby picture",
                     photo_url: values[0],
-                    location: { type: 'Point', coordinates: [-3.6742326, 40.3922639] },
+                    location: { type: 'Point', coordinates: [-3.71183, 40.3818751] },
                     // neighborhood: undefined,
                     found_by: userId,
                     shelter: shelterId
@@ -192,6 +192,8 @@ Axios.get('https://randomuser.me/api/', {
             .then(() => {
                 Pet.deleteMany()
                     .then(() => {
+                        Pet.createIndexes({ location: "2dsphere" })
+
                         Pet
                             .create(fakePets)
                             .then(() => {

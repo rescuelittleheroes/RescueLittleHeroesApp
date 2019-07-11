@@ -30,6 +30,7 @@ const PetSchema = Schema({
         updatedAt: "updated_at"
     }
 });
+PetSchema.index({ location: '2dsphere' });
 
 const Pet = mongoose.model("Pet", PetSchema);
 module.exports = Pet;

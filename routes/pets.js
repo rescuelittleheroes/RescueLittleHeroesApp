@@ -80,42 +80,42 @@ router.get('/edit/:id', (req, res, next) => {
 });
 
 router.get("/petInfo/:id", (req, res) => {
-  Pet.findById(req.params.id).then(petInfo => res.json(petInfo));
+    Pet.findById(req.params.id).then(petInfo => res.json(petInfo));
 });
 
 router.put("/petUpdate", (req, res) => {
-    
-  Pet.findByIdAndUpdate(req.body.id, req.body).then(updatedPet =>
-    res.json({updated: true})
-  );
+
+    Pet.findByIdAndUpdate(req.body.id, req.body).then(updatedPet =>
+        res.json({ updated: true })
+    );
 });
 
 router.post("/lostPets", (req, res) => {
-  console.log(req.body._id);
-  Pet.findByIdAndUpdate(req.body._id, {
-    // shelter: req.body.shelter,
-    name: req.body.name,
-    // type_animal: "Dog",
-    size: req.body.size
+    console.log(req.body._id);
+    Pet.findByIdAndUpdate(req.body._id, {
+            // shelter: req.body.shelter,
+            name: req.body.name,
+            // type_animal: "Dog",
+            size: req.body.size
 
-    // wasFounded: false,
-    // description: "Encontrado pequeño caniche blanco",
-    // photo_name: "original name", //req.file.originalname,
-    // photo_url:
-    //   "https://www.hogarmania.com/archivos/201705/mascotas-perros-razas-caniche-668x400x80xX.jpg", //req.file.url,
-    // location: {
-    //   type: "Point",
-    //   coordinates: [+req.body.longitude, +req.body.latitude]
-    // },
-    // neighborhood: ["Puente Vallecas"],
-    // found_by: req.user.id
-  })
-    .then(updatedPet => {
-      res.redirect("/");
-    })
-    .catch(err => {
-      console.log(err);
-    });
+            // wasFounded: false,
+            // description: "Encontrado pequeño caniche blanco",
+            // photo_name: "original name", //req.file.originalname,
+            // photo_url:
+            //   "https://www.hogarmania.com/archivos/201705/mascotas-perros-razas-caniche-668x400x80xX.jpg", //req.file.url,
+            // location: {
+            //   type: "Point",
+            //   coordinates: [+req.body.longitude, +req.body.latitude]
+            // },
+            // neighborhood: ["Puente Vallecas"],
+            // found_by: req.user.id
+        })
+        .then(updatedPet => {
+            res.redirect("/");
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 router.get('/json', (req, res, next) => {
@@ -128,20 +128,25 @@ router.get('/json', (req, res, next) => {
 });
 
 router.get('/lostpetsmap/:lng/:lat/:distance', (req, res, next) => {
-    // {location:{$near: {$geometry: {type: "Point",coordinates: [-3.6749371, 40.3923761]},$maxDistance: 1000,$minDistance: 10}}}    debugger
     console.log("+-+-+-+-+-+-+--+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+")
-    console.log(req.params.lng)
-    console.log(req.params.lat)
-    console.log(req.params.distance)
-    debugger
-    // db.coleccion.find({location : {$near : [-3.6749371, 40.3923761 , $maxDistance : 1000}})
+    console.log("longitud: " + req.params.lng)
+    console.log("latitud: " + req.params.lat)
+    console.log("distance: " + req.params.distance)
     Pet
         .find({
             location: {
-                $near: [-3.6749371, 40.3923761],
-                $maxDistance: 1000
+                $near: {
+                    $geometry: {
+                        type: "Point",
+                        coordinates: [+req.params.lng, +req.params.lat]
+                    },
+                    $maxDistance: +req.params.distance,
+                    $minDistance: 0
+                }
             }
         }).then(pets => {
+            console.log("=======================================")
+            console.log(pets)
             res.json({ pets })
         }).catch((err) => {
             console.log(err)
@@ -150,6 +155,14 @@ router.get('/lostpetsmap/:lng/:lat/:distance', (req, res, next) => {
 
 module.exports = router;
 
-// location: { $near: [-74, 40], $maxDistance: 10 }
 
-// { location: { $near: [coordinates.lng, coordinates.lat], $maxDistance: req.params.distance } }
+// db.pets.find({location: {
+//     $near: {
+//       $geometry: {
+//           type: "Point",
+//           coordinates: [-3.6749371, 40.3923761]
+//       },
+//       $maxDistance: 1000000,
+//       $minDistance: 0
+//   }
+//   }})
