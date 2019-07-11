@@ -61,7 +61,7 @@ function showLostPetsInMap(lng, lat, dist) {
                         title: `${pet.name} (${pet.type_animal})`
                     });
                     let contentString = `<style>
-                        img{
+                        #pet-pict{
                             border-radius: 50%;
                         }
                         #wrapper{
@@ -70,7 +70,7 @@ function showLostPetsInMap(lng, lat, dist) {
                             align-items: center;
                             align-content: center;
                         }
-                        a{
+                        #link-details{
                             text-decoration: none;
                         }
                         </style>
@@ -78,10 +78,10 @@ function showLostPetsInMap(lng, lat, dist) {
                         <section id="wrapper">
                             <div id="data-pet">
                                 <h3> ${pet.name} </h3>
-                                <img src="${pet.photo_url}" alt="${pet.photo_name}" height="100" width="100">
+                                <img id="pet-pict" src="${pet.photo_url}" alt="${pet.photo_name}" height="100" width="100">
                             </div>
                             <div>
-                                <button><a href="/pet/detail/${pet._id}">Details</a></button>
+                                <button><a id="link-details" href="/pet/detail/${pet._id}">Details</a></button>
                             </div>
                         </wrapper>
                     </body>`
