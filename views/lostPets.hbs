@@ -39,6 +39,7 @@
         document.querySelector("#modalEdit input[name=id]").setAttribute("value", id)
         document.querySelector("#modalEdit input[name=name]").setAttribute("value", petInfo.name)
         document.querySelector("#modalEdit input[name=size]").setAttribute("value", petInfo.size)
+       
       })
 
   }
@@ -49,6 +50,7 @@
         name: document.querySelector("#modalEdit input[name=name]").value,
         id: document.querySelector("#modalEdit input[name=id]").value,
         size: document.querySelector("#modalEdit input[name=size]").value
+        
       }).then(updateInfo => {
         location.href = "http://localhost:3000/pet/list"
       })
@@ -205,7 +207,11 @@ FORMULARIO FILTRO--}}
               <input type="text" id="formPositionEdit" name="size" placeholder="Size" class="form-control validate">
               <label data-error="wrong" data-success="right" for="formPositionEdit"></label>
             </div>
+
+            
           </div>
+
+          
 
           <div class="modal-footer d-flex justify-content-center editInsideWrapper">
             <button class="btn btn-outline-secondary btn-block editInside" onclick="updatePet()"
