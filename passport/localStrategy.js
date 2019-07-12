@@ -3,8 +3,9 @@ const LocalStrategy = require('passport-local').Strategy;
 const User          = require('../models/User');
 const bcrypt        = require('bcrypt');
 const SlackStrategy = require("passport-slack").Strategy;
-const InstagramStrategy = require("passport-instagram").Strategy;
+// const InstagramStrategy = require("passport-instagram").Strategy;
 const GitHubStrategy = require("passport-github").Strategy;
+const InstagramStrategy = require("passport-instagram").Strategy;
 
 passport.use(new LocalStrategy({
     usernameField: 'username',
@@ -43,20 +44,6 @@ passport.use(
   )
 );
 
-passport.use(
-  new InstagramStrategy(
-    {
-      clientID: process.env.INSTAGRAM_CLIENT_ID,
-      clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/login"
-    },
-    function(accessToken, refreshToken, profile, done) {
-      User.findOrCreate({ instagramId: profile.id }, function(err, user) {
-        return done(err, user);
-      });
-    }
-  )
-);
 
 
 
@@ -65,15 +52,66 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+      callbackURL: "http://localhost:3000/auth/github/callback"
     },
-    function(accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ githubId: profile.id }, function(err, user) {
-        return cb(err, user);
-      });
+    function(accessToken, refreshToken, profile, done) {
+             User.findOne({
+               githubId: profile.id
+             })
+               .then(user => {
+                 if (user) {
+                   return done(null, user);
+                 }
+                 const newUser = new User({
+                   username: profile.displayName,
+                   githubId: profile.id,
+                   email: profile.email
+                   
+                 });
+                 newUser.save().then(user => {
+                   done(null, newUser);
+                 });
+               })
+               .catch(error => {
+                 done(error);
+               });
     }
   )
 );
+
+
+
+passport.use(
+  new InstagramStrategy(
+    {
+      clientID: process.env.INSTAGRAM_CLIENT_ID,
+      clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
+      callbackURL: "http://localhost:3000/auth/instagram/callback"
+    },
+    function(accessToken, refreshToken, profile, done) {
+      User.findOne({
+        instagramId: profile.id
+      })
+        .then(user => {
+          if (user) {
+            return done(null, user);
+          }
+          const newUser = new User({
+            username: profile.displayName,
+            instagramId: profile.id,
+            email: profile.email
+          });
+          newUser.save().then(user => {
+            done(null, newUser);
+          });
+        })
+        .catch(error => {
+          done(error);
+        });
+    }
+  )
+);
+
 
 
 
