@@ -204,11 +204,11 @@ FORMULARIO FILTRO--}}
               <h3 class="h3-pets">{{this.name}}</h3>
               <p class="p-pets"> {{this.description}}</p>
               <p class="p-pets">{{this.size}}</p>
+              {{#if isAdmin}}
               <div class="text-center show-onclick">
                 <a class="btn btn-info btn-rounded btn-sm" id="text-add" data-toggle="modal" data-target="#modalEdit"
                   onclick="edit('{{this._id}}')">Edit<i class="fas fa-plus-square ml-1"></i></a>
               </div>
-
               {{/if}}
               <div class="text-center show-onclick">
                 <a class="btn btn-info btn-rounded btn-sm" id="show-details-pet"
