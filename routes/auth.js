@@ -57,7 +57,6 @@ router.post("/signup", (req, res, next) => {
 
         newUser.save()
             .then(() => {
-                console.log("HE CREADO EL USUARIOOOOOOOOOOO!!!!!!")
                 res.redirect("/");
             })
             .catch(err => {
@@ -118,7 +117,7 @@ router.get("/auth/slack/callback", passport.authenticate("slack", {
 }));
 
 
-router.get("/auth/instagram/callback", passport.authenticate("instagram", { failureRedirect: "/login" }),
+router.get("/auth/instagram/callback", passport.authenticate("instagram", { failureRedirect: "/auth/login" }),
     function(req, res) {
         // Successful authentication, redirect home.
         res.redirect("/");
@@ -127,7 +126,7 @@ router.get("/auth/instagram/callback", passport.authenticate("instagram", { fail
 
 router.get("/auth/github", passport.authenticate("github"));
 
-router.get("/auth/github/callback", passport.authenticate("github", { failureRedirect: "/login" }),
+router.get("/auth/github/callback", passport.authenticate("github", { failureRedirect: "/auth/login" }),
     function(req, res) {
         // Successful authentication, redirect home.
         res.redirect("/");
