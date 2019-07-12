@@ -48,7 +48,8 @@ router.post("/add", uploadCloud.single("photo_url"), (req, res, next) => {
             // wasFounded: req.body.wasFounded,
             description: req.body.description,
             found_by: req.user._id,
-            photo_url: req.file.url
+            photo_url: req.file.url,
+            location: { type: 'Point', coordinates: [+req.body.lng, +req.body.lat] }
 
         })
         .then(newPet => {
