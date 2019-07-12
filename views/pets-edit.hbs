@@ -1,4 +1,13 @@
+<div id="map-info">
+  <div class="col-md-4">
+    <div id="map"></div>
+  </div>
+</div>
+<div class="container-edit">
+    
 <section class="mb-4">
+
+
 
   <h2 class="h1-responsive font-weight-bold text-center my-4">Crea tu mascota</h2>
 
@@ -13,6 +22,8 @@
       <form id="contact-form" name="contact-form" action="/pet/add" method="POST" enctype="multipart/form-data">
 
 
+  
+
         <div class="row">
           <div class="col-md-12">
             <div class="md-form mb-0">
@@ -22,6 +33,9 @@
         
             </div>
           </div>
+
+      
+
         </div>
 
         <div class="row">
@@ -74,12 +88,6 @@
         </div>
 
 
-        <div id="map-info" class="row">
-          <div class="col-md-12">
-            <div id="map"></div>
-          </div>
-        </div>
-
 
 
         <input class="btn btn-primary" type="submit" value="ADD">
@@ -87,10 +95,34 @@
       </form>
     </div>
 
+<div class="latitude-container">
+<div class="row">
+
+  
+  <div class="col-md-6">
+    <div class="md-form mb-0">
+      <input type="text" id="lang" name="lang" class="form-control">
+      <label for="lang" class="">Longuitude</label>
+    </div>
+  </div>
+ 
+  <div class="col-md-6">
+    <div class="md-form mb-0">
+      <input type="text" id="lat" name="lat" class="form-control">
+      <label for="lat" class="">Latitude</label>
+    </div>
+  </div>
+ 
+  </div>
+</div>
+
+
 
   </div>
 
 </section>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA00_tJSOxaMHDNlehMVJB_hXRhADTAdMk"> </script>
 <script src="/javascripts/petsedit.js"></script>
+
+</div>
 
