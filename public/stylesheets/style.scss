@@ -963,3 +963,38 @@ label {
     margin: auto;
     padding-bottom: 60px;
 }
+
+
+#map-info{
+    display: flex;
+    justify-content: flex-end;
+    // flex-direction: row;
+    width: -45%;
+    padding-right: 13.5rem;
+   position: absolute;
+   top: 23rem;
+   right: 15rem;
+ 
+
+
+
+}
+
+
+#map {
+    height: 50vh;
+    width: 40vw;
+}
+
+
+
+.latitude-container{
+     display: flex;
+     justify-content: flex-end;
+     // flex-direction: row;
+     width: -45%;
+     padding-right: 13.5rem;
+     position: absolute;
+     top: 46rem;
+     right: 1rem;
+}
