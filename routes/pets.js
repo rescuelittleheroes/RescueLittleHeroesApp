@@ -10,8 +10,9 @@ const ensureLogin = require("connect-ensure-login");
 // });
 
 router.get('/list', (req, res, next) => {
-    let isAdmin = false
+    let isAdmin = false //necesario para el botton de ADD
     Pet.find({})
+        .populate("found_by")
         .then(pets => {
             if (req.isAuthenticated()) {
                 isAdmin = true
@@ -19,7 +20,6 @@ router.get('/list', (req, res, next) => {
                     if (req.user.role === 'Admin') pet.isAdmin = isAdmin;
                     return pet
                 })
-
             }
             res.render("lostPets", { pets, isAdmin: isAdmin })
         }).catch((err) => {
@@ -47,7 +47,7 @@ router.post("/add", uploadCloud.single("photo_url"), (req, res, next) => {
             size: req.body.size,
             // wasFounded: req.body.wasFounded,
             description: req.body.description,
-
+            found_by: req.user._id,
             photo_url: req.file.url
 
         })
