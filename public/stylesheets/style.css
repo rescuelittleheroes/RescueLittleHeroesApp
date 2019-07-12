@@ -722,12 +722,10 @@ label {
   width: -45%;
   padding-right: 13.5rem;
   position: absolute;
-
   top: 26rem;
   right: -23rem; }
 
 .is-flipped {
   transform: rotateY(180deg); }
-
 
 /*# sourceMappingURL=style.css.map */

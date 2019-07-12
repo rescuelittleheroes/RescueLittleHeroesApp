@@ -42,8 +42,8 @@ function placeMarker(position, map) {
     map.panTo(position);
     markers.push(marker);
 
-    console.log(position.lat())
-    console.log(position.lng())
+    document.querySelector("#lat").value = position.lat()
+    document.querySelector("#lng").value = position.lng()
 }
 
 function cleanMarkers() {
