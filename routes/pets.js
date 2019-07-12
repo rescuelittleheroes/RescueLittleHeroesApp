@@ -10,17 +10,18 @@ const ensureLogin = require("connect-ensure-login");
 // });
 
 router.get('/list', (req, res, next) => {
+    let isAdmin = false
     Pet.find({})
         .then(pets => {
             if (req.isAuthenticated()) {
+                isAdmin = true
                 pets = pets.map(pet => {
-                    if (req.user.role === 'Admin') pet.isAdmin = true;
+                    if (req.user.role === 'Admin') pet.isAdmin = isAdmin;
                     return pet
                 })
-                res.render("lostPets", { pets })
-            } else {
-                res.render("lostPets", { pets })
+
             }
+            res.render("lostPets", { pets, isAdmin: isAdmin })
         }).catch((err) => {
             console.log(err)
         });
