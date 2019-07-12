@@ -39,24 +39,26 @@ router.post("/signup", (req, res, next) => {
             res.render("auth/signup", { message: "The username already exists" });
             return;
         }
-
+        console.log("PROBANDO A CREAR USUARIOOOOOOOOO")
+        console.log("req.body:")
+        console.log(req.body)
         const salt = bcrypt.genSaltSync(bcryptSalt);
         const hashPass = bcrypt.hashSync(password, salt);
 
         const newUser = new User({
-            username,
-            password: hashPas,
+            username: req.body.username,
+            password: hashPass,
             email: req.body.email,
+            name: req.body.name,
             surname: req.body.surname
                 // telephoneNumber: "555987098",
-                // password: "test",
-                // name: "TestName",
                 // isAdmin: true,
                 // role: "Admin"
         });
 
         newUser.save()
             .then(() => {
+                console.log("dato grabado y te reenvio a home")
                 res.redirect("/");
             })
             .catch(err => {

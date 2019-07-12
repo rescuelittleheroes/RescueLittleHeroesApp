@@ -13,21 +13,25 @@
         <article class="card is-rounded is-centered login-card">
 
 
-          <form action="/signup" method="POST" id="form-container">
+          <form action="/auth/signup" method="POST" id="form-container">
             <p class="control has-icon login-input">
-              <input type="text" name="username" class="input form-control" placeholder="Nombre">
+              <input type="text" name="name" class="input form-control" placeholder="Name">
 
             </p>
             <p class="control has-icon login-input">
-              <input type="text" name="surname" class="input form-control" placeholder="Apellidos">
+              <input type="text" name="surname" class="input form-control" placeholder="Surname">
 
             </p>
             <p class="control has-icon login-input">
-              <input id="email" class="input" name="email" type="email" placeholder="Dirección de correo electrónico">
+              <input type="text" name="username" class="input form-control" placeholder="Username">
 
             </p>
             <p class="control has-icon login-input">
-              <input id="password" class="input" name="password" type="password" placeholder="Contraseña">
+              <input id="email" class="input" name="email" type="email" placeholder="Email">
+
+            </p>
+            <p class="control has-icon login-input">
+              <input id="password" class="input" name="password" type="password" placeholder="Password">
             </p>
             {{!-- <div class="field">
               <input id="switchRoundedSuccess" type="checkbox" name="switchRoundedSuccess"
@@ -45,25 +49,26 @@
             <?xml version="1.0" encoding="utf-8"?>
             <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
             <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-              y="0px" width="26px" height="26px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-            
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="26px" height="26px"
+              viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+
               <path fill="#ffffff" d="M480,0H32C14.312,0,0,14.312,0,32v448c0,17.688,14.312,32,32,32h448
                 	c17.688,0,32-14.312,32-32V32C512,14.312,497.688,0,480,0z M192,256c0,0,5.062-64,64-64s64,64,64,64s1.844,64-64,64S192,256,192,256
                 	z M448,448H64V224h64h4.531c-2.656,10.281-4.531,20.875-4.531,32c0,70.688,57.312,128,128,128s128-57.312,128-128
                 	c0-11.125-1.875-21.719-4.531-32H384h64V448z M448,160h-96V64h96V160z" />
             </svg>
             </a>
-            
+
             <a class="social-link social-link--github" id="github"
               href="https://github.com/login/oauth/authorize?scope=user:email&client_id=17b0a11daed09a6bc990">
-            
+
               {{!-- <a class="slack-login"
                               href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.team,identity.avatar&client_id=2432150752.691161987254">
                               <img alt="Sign in with Slack" src="https://platform.slack-edge.com/img/sign_in_with_slack@2x.png" />
                             </a> --}}
-            
-            
+
+
               <svg class="social-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
                 <title>
                   github
@@ -106,34 +111,34 @@
                 </defs>
                 <g class="social-group" fill="none" fill-rule="evenodd">
                   <circle class="social-group__outline" stroke="#000" stroke-width="20" cx="300" cy="300" r="262.5" />
-                  <circle class="social-group__inner-circle social-group__inner-circle--instagram" fill="url(#simpleInsta)" cx="300"
-                    cy="300" r="252.5" />
+                  <circle class="social-group__inner-circle social-group__inner-circle--instagram"
+                    fill="url(#simpleInsta)" cx="300" cy="300" r="252.5" />
                   <path class="social-group__icon"
                     d="M436.8577 205.4154c-3.6808-9.4808-8.5885-17.5116-16.6192-25.5423-8.0308-8.0308-16.0616-12.9385-25.5423-16.6193-9.1462-3.5692-19.7424-6.023-35.0231-6.6923-15.3923-.6692-20.3-.8923-59.5616-.8923-39.2615 0-44.1692.1116-59.5615.8923-15.3923.6693-25.877 3.1231-35.023 6.6923-9.4808 3.6808-17.5116 8.5885-25.5424 16.6193-8.0308 8.0307-12.9384 16.0615-16.6192 25.5423-3.5692 9.1461-6.023 19.7423-6.6923 35.023-.6693 15.3924-.8923 20.3-.8923 59.5616 0 39.2615.1115 44.1692.8923 59.5615.6692 15.3923 3.123 25.877 6.6923 35.0231 3.6808 9.4808 8.5884 17.5116 16.6192 25.5423 8.0308 8.0308 16.0616 12.9385 25.5423 16.6193 9.1462 3.5692 19.7423 6.023 35.0231 6.6923 15.3923.6692 20.3.8923 59.5615.8923 39.2616 0 44.1693-.1116 59.5616-.8923 15.3923-.6693 25.8769-3.1231 35.023-6.6923 9.4808-3.6808 17.5116-8.5885 25.5424-16.6193 8.0307-8.0307 12.9384-16.0615 16.6192-25.5423 3.5692-9.1461 6.023-19.7423 6.6923-35.023.6692-15.3924.8923-20.3.8923-59.5616 0-39.2615-.1115-44.1692-.8923-59.5615-.6692-15.3923-3.123-25.877-6.6923-35.0231zm-19.2962 152.9192c-.6692 14.0539-3.0115 21.75-5.0192 26.7692-2.5654 6.6924-5.8 11.6-10.8192 16.6193-5.0193 5.0192-9.8154 8.1423-16.6193 10.8192-5.1307 2.0077-12.7153 4.35-26.7692 5.0192-15.2808.6693-19.7423.8923-58.3346.8923s-43.1654-.1115-58.3346-.8923c-14.0539-.6692-21.75-3.0115-26.7692-5.0192-6.6924-2.5654-11.6-5.8-16.6193-10.8192-5.0192-5.0193-8.1423-9.8154-10.8192-16.6193-2.0077-5.1307-4.35-12.7153-5.0192-26.7692-.6693-15.2808-.8923-19.8538-.8923-58.3346s.1115-43.1654.8923-58.3346c.6692-14.0539 3.0115-21.75 5.0192-26.7692 2.5654-6.6924 5.8-11.6 10.8192-16.6193 5.0193-5.0192 9.8154-8.1423 16.6193-10.8192 5.1307-2.0077 12.7153-4.35 26.7692-5.0192 15.2808-.6693 19.8538-.8923 58.3346-.8923s43.1654.1115 58.3346.8923c14.0539.6692 21.75 3.0115 26.7692 5.0192 6.6924 2.5654 11.6 5.8 16.6193 10.8192 5.0192 5.0193 8.1423 9.8154 10.8192 16.6193 2.0077 5.1307 4.35 12.7153 5.0192 26.7692.6693 15.2808.8923 19.8538.8923 58.3346s-.223 43.1654-.8923 58.3346zM300 225.827c-40.9346 0-74.173 33.2385-74.173 74.1731s33.2384 74.173 74.173 74.173 74.173-33.2384 74.173-74.173-33.2384-74.173-74.173-74.173zm0 122.3577c-26.5462 0-48.1846-21.527-48.1846-48.1846 0-26.5462 21.527-48.1846 48.1846-48.1846 26.6577 0 48.1846 21.527 48.1846 48.1846 0 26.5462-21.6384 48.1846-48.1846 48.1846zm77.073-107.9692c-9.548 0-17.2884-7.7403-17.2884-17.2885 0-9.5481 7.7403-17.2884 17.2885-17.2884 9.5481 0 17.2884 7.7403 17.2884 17.2884 0 9.5482-7.7403 17.2885-17.2884 17.2885z"
                     fill="#FFF" fill-rule="nonzero" />
                 </g>
               </svg>
             </a>
-            </div>
-            </div>
-
-          
-          </form>
-
-         
-
-          <p class="account-message">
-            Si ya estas ya registrado
-            <a href="/auth/login" class="auth-link">Login</a>
-          </p>
-          {{#if message }}
-          <br>
-          <br>
-          <div class="error-message control">{{ message }}</div>
-          {{/if}}
-
-        </article>
       </div>
     </div>
+
+
+    </form>
+
+
+
+    <p class="account-message">
+      Si ya estas ya registrado
+      <a href="/auth/login" class="auth-link">Login</a>
+    </p>
+    {{#if message }}
+    <br>
+    <br>
+    <div class="error-message control">{{ message }}</div>
+    {{/if}}
+
+    </article>
+  </div>
+  </div>
   </div>
 </section>
