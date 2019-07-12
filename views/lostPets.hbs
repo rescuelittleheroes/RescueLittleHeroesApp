@@ -61,6 +61,7 @@
 
 
 </script>
+
 <body>
   {{!-- 
 FORMULARIO FILTRO--}}
@@ -95,7 +96,7 @@ FORMULARIO FILTRO--}}
 
 
   <form>
- 
+
     <div class="form-group">
       <label for="exampleFormControlSelect1">Size</label>
       <select class="form-control" id="exampleFormControlSelect1" onchange="getSize(this.value)">
@@ -103,20 +104,16 @@ FORMULARIO FILTRO--}}
         <option value="Big">Big</option>
         <option value="Medium">Medium</option>
         <option value="Small">Small</option>
-        
+
       </select>
     </div>
   </form>
-
 
   <div class="buttons">
     <a href="/pet/add" class="button is-info-animals" id="animals-btn">
       Añadir Mascota
     </a>
   </div>
-
-
-
 
   {{!-- FOTOS --}}
   <div class="wrap-container">
@@ -154,7 +151,54 @@ FORMULARIO FILTRO--}}
             </div>
           </div>
 
-         
+
+
+
+          <script>
+
+            function deletePet() {
+
+              let currentPetId = document.querySelector("#modalEdit input[name=id]").value
+              let URL = "http://localhost:3000/pet/petDeletion/" + currentPetId
+
+              axios.delete(URL).then(deletedInfo => {
+                location.href = "http://localhost:3000/pet/list"
+              })
+            }
+
+
+
+
+            function edit(id) {
+
+              axios
+                .get("http://localhost:3000/pet/petInfo/" + id)
+                .then(petInfo => {
+                  petInfo = petInfo.data
+                  document.querySelector("#modalEdit input[name=id]").setAttribute("value", id)
+                  document.querySelector("#modalEdit input[name=name]").setAttribute("value", petInfo.name)
+                  document.querySelector("#modalEdit input[name=size]").setAttribute("value", petInfo.size)
+                })
+
+            }
+
+            function updatePet() {
+              axios
+                .put("http://localhost:3000/pet/petUpdate", {
+                  name: document.querySelector("#modalEdit input[name=name]").value,
+                  id: document.querySelector("#modalEdit input[name=id]").value,
+                  size: document.querySelector("#modalEdit input[name=size]").value
+                }).then(updateInfo => {
+                  location.href = "http://localhost:3000/pet/list"
+                })
+            }
+
+
+
+
+
+          </script>
+
           <div class="story" id="s0">
             <div class="info">
               <h3 class="h3-pets">{{this.name}}</h3>
@@ -163,6 +207,13 @@ FORMULARIO FILTRO--}}
               <div class="text-center show-onclick">
                 <a class="btn btn-info btn-rounded btn-sm" id="text-add" data-toggle="modal" data-target="#modalEdit"
                   onclick="edit('{{this._id}}')">Edit<i class="fas fa-plus-square ml-1"></i></a>
+              </div>
+
+              {{/if}}
+              <div class="text-center show-onclick">
+                <a class="btn btn-info btn-rounded btn-sm" id="show-details-pet"
+                  href="/pet/detail/{{this._id}}">Details<i class="fas fa-plus-square ml-1"></i>
+                </a>
               </div>
               {{!-- <p class="p-pets">Kitten - Male - Medium</p> --}}
             </div>
