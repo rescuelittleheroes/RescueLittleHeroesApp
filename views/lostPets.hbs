@@ -39,6 +39,7 @@
         document.querySelector("#modalEdit input[name=id]").setAttribute("value", id)
         document.querySelector("#modalEdit input[name=name]").setAttribute("value", petInfo.name)
         document.querySelector("#modalEdit input[name=size]").setAttribute("value", petInfo.size)
+       
       })
 
   }
@@ -49,6 +50,7 @@
         name: document.querySelector("#modalEdit input[name=name]").value,
         id: document.querySelector("#modalEdit input[name=id]").value,
         size: document.querySelector("#modalEdit input[name=size]").value
+        
       }).then(updateInfo => {
         location.href = "http://localhost:3000/pet/list"
       })
@@ -197,17 +199,16 @@ FORMULARIO FILTRO--}}
 
           </script>
 
-
           <div class="story" id="s0">
             <div class="info">
               <h3 class="h3-pets">{{this.name}}</h3>
               <p class="p-pets"> {{this.description}}</p>
               <p class="p-pets">{{this.size}}</p>
-              {{#if isAdmin }}
               <div class="text-center show-onclick">
                 <a class="btn btn-info btn-rounded btn-sm" id="text-add" data-toggle="modal" data-target="#modalEdit"
                   onclick="edit('{{this._id}}')">Edit<i class="fas fa-plus-square ml-1"></i></a>
               </div>
+
               {{/if}}
               <div class="text-center show-onclick">
                 <a class="btn btn-info btn-rounded btn-sm" id="show-details-pet"
@@ -217,7 +218,6 @@ FORMULARIO FILTRO--}}
               {{!-- <p class="p-pets">Kitten - Male - Medium</p> --}}
             </div>
           </div>
-
         </div>
 
 
@@ -258,7 +258,11 @@ FORMULARIO FILTRO--}}
               <input type="text" id="formPositionEdit" name="size" placeholder="Size" class="form-control validate">
               <label data-error="wrong" data-success="right" for="formPositionEdit"></label>
             </div>
+
+            
           </div>
+
+          
 
           <div class="modal-footer d-flex justify-content-center editInsideWrapper">
             <button class="btn btn-outline-secondary btn-block editInside" onclick="updatePet()"
