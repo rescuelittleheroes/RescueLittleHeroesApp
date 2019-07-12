@@ -722,12 +722,25 @@ label {
   width: -45%;
   padding-right: 13.5rem;
   position: absolute;
-
   top: 26rem;
   right: -23rem; }
 
 .is-flipped {
   transform: rotateY(180deg); }
 
+.card__face--back {
+  background-image: url("../images/shelter direction.jpeg"); }
+
+.card__face {
+  backface-visibility: hidden; }
+
+.navImg {
+  margin: 10px;
+  height: 20px; }
+
+.navbar.is-dark .navbar-end .navbar-link {
+  color: whitesmoke;
+  font-size: 1.3rem;
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */

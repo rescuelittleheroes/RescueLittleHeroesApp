@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
+
+
 const UserSchema = Schema(
   {
     username: { type: String, required: true },
@@ -10,6 +12,9 @@ const UserSchema = Schema(
     name: String,
     surname: String,
     githubId: String,
+    imgPath: {type: String, default:"/images/defaultprofile.png"},
+    
+  
     instagramId: String,
     isAdmin: { type: Boolean, default: false },
     role: {
