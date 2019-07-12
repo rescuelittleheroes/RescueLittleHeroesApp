@@ -1,3 +1,5 @@
+let markers = []
+
 function getYourCurrentPosition() {
     let user_location = { lat: 40.4167754, lng: -3.7037902 }; //madrid coordinates to start
     // Initialize the map
@@ -16,14 +18,9 @@ function getYourCurrentPosition() {
             // Center map with user location
             map.setCenter(user_location);
 
-            // Add a marker for your user location
-            const userMarker = new google.maps.Marker({
-                position: {
-                    lat: user_location.lat,
-                    lng: user_location.lng
-                },
-                map: map,
-                title: "You are here."
+            map.addListener('click', function(e) {
+                cleanMarkers()
+                placeMarker(e.latLng, map);
             });
 
         }, function() {
@@ -36,3 +33,22 @@ function getYourCurrentPosition() {
 }
 
 getYourCurrentPosition();
+
+function placeMarker(position, map) {
+    let marker = new google.maps.Marker({
+        position: position,
+        map: map
+    });
+    map.panTo(position);
+    markers.push(marker);
+
+    console.log(position.lat())
+    console.log(position.lng())
+}
+
+function cleanMarkers() {
+    for (let cont = 0; cont < markers.length; cont++) {
+        markers[cont].setMap(null);
+    }
+    markers = [];
+}
