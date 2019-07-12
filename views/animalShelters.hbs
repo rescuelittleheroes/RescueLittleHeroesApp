@@ -7,35 +7,40 @@
 
   <link rel="icon" href="img/fav-icon.png" type="image/x-icon" />
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Sierra</title>
-
+  
+{{!-- 
   <!-- Icon css link -->
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Rev slider css -->
-  <link href="vendors/revolution/css/settings.css" rel="stylesheet">
-  <link href="vendors/revolution/css/layers.css" rel="stylesheet">
-  <link href="vendors/revolution/css/navigation.css" rel="stylesheet">
-
-  <!-- Extra plugin css -->
-  <link href="vendors/owl-carousel/owl.carousel.min.css" rel="stylesheet">
-  <link href="vendors/magnify-popup/magnific-popup.css" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <link rel="stylesheet" href="/stylesheets/style.css" /> --}}
 </head>
 
 <body>
+
+  <script>
+
+    function flipped(){
+     let card = document.querySelector('.col-lg-4');
+     card.classList.toggle('is-flipped');
+    }
+    
+    
+
+    
+  </script>
 
 
 
   <section class="shelters_animals">
     <div class="container">
       <div class="row feature_inner">
-        <div class="col-lg-4 col-sm-6">
-          <div class="feature_item">
+        <div class="col-lg-4 col-sm-6" onclick="flipped()">
+          <div class="feature_item" >
             <div class="f_icon">
               <img src="../images/logo rivani.jpg" alt="">
             </div>
@@ -90,6 +95,8 @@
              
           </div>
         </div>
+       
+        
         <div class="col-lg-4 col-sm-6">
           <div class="feature_item">
             <div class="f_icon">
@@ -98,6 +105,9 @@
             <h4>El Refugio</h4>
             <p>Organización española especializada en la ayuda a perros y gatos abandonados</p>    
             <a class="more_btn" href="https://elrefugio.org/default.aspx">Infórmate</a>
+            {{!-- <div class="card__face card__face--back">
+              <img src="../images/shelter direction.jpeg" alt="">
+            </div> --}}
        
           </div>
         </div>

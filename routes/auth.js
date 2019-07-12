@@ -113,11 +113,12 @@ router.post("/edit-place", (req, res) => {
 
 
 
-router.get("/auth/slack/callback", passport.authenticate("slack", {
-    successRedirect: "/shelters",
-    failureRedirect: "/"
-}));
+// router.get("/auth/slack/callback", passport.authenticate("slack", {
+//     successRedirect: "/shelters",
+//     failureRedirect: "/"
+// }));
 
+router.get("/auth/instagram", passport.authenticate("instagram"));
 
 router.get("/auth/instagram/callback", passport.authenticate("instagram", { failureRedirect: "/auth/login" }),
     function(req, res) {
@@ -128,8 +129,9 @@ router.get("/auth/instagram/callback", passport.authenticate("instagram", { fail
 
 router.get("/auth/github", passport.authenticate("github"));
 
-router.get("/auth/github/callback", passport.authenticate("github", { failureRedirect: "/auth/login" }),
+router.get("/github/callback", passport.authenticate("github", { failureRedirect: "/auth/login" }),
     function(req, res) {
+        console.log("estee : " + req)
         // Successful authentication, redirect home.
         res.redirect("/");
     }
